@@ -1,0 +1,93 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
+#
+
+set name=pkg.fmri \
+    value=pkg:/$(IPS_PKG_NAME)@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary \
+    value="Application servers (for various programming languages and protocols)"
+set name=com.oracle.info.description \
+    value="Application servers (for various programming languages and protocols)"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value="org.opensolaris.category.2008:Web Services/Application and Web Servers"
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+file path=usr/bin/uwsgi
+dir  path=usr/share/uwsgi
+dir  path=usr/share/uwsgi/examples
+file path=usr/share/uwsgi/examples/bootstrap.py
+file path=usr/share/uwsgi/examples/bootstrap2.py
+file path=usr/share/uwsgi/examples/bootstrap3.py
+file path=usr/share/uwsgi/examples/bootstrap4.py
+file path=usr/share/uwsgi/examples/bootstrap5.py
+file path=usr/share/uwsgi/examples/config.lua
+file path=usr/share/uwsgi/examples/config.ru
+file path=usr/share/uwsgi/examples/config17.ru
+file path=usr/share/uwsgi/examples/config2.lua
+file path=usr/share/uwsgi/examples/config2.ru
+file path=usr/share/uwsgi/examples/config30.ru
+file path=usr/share/uwsgi/examples/corostream.pl
+file path=usr/share/uwsgi/examples/debug.ini
+file path=usr/share/uwsgi/examples/fibers.ru
+file path=usr/share/uwsgi/examples/fibers.yml
+file path=usr/share/uwsgi/examples/flaskpost.py
+file path=usr/share/uwsgi/examples/heavytest.ini
+file path=usr/share/uwsgi/examples/heavytest.py
+file path=usr/share/uwsgi/examples/info_uwsgi.php
+file path=usr/share/uwsgi/examples/logic.ini
+file path=usr/share/uwsgi/examples/mega.xml
+file path=usr/share/uwsgi/examples/mjpeg_stream.py
+file path=usr/share/uwsgi/examples/mojoapp.pl
+file path=usr/share/uwsgi/examples/multi.ini
+file path=usr/share/uwsgi/examples/multi.xml
+file path=usr/share/uwsgi/examples/multiapp.py
+file path=usr/share/uwsgi/examples/protected.ini
+file path=usr/share/uwsgi/examples/router.lua
+file path=usr/share/uwsgi/examples/simple_app.py
+file path=usr/share/uwsgi/examples/simple_app_wsgi2.py
+file path=usr/share/uwsgi/examples/simple_logger.py
+file path=usr/share/uwsgi/examples/sites.xml
+file path=usr/share/uwsgi/examples/sputnik.ws
+file path=usr/share/uwsgi/examples/staticfilesnmp.py
+file path=usr/share/uwsgi/examples/taskqueue.py
+file path=usr/share/uwsgi/examples/uwsgi.xml
+file path=usr/share/uwsgi/examples/uwsgirouter.py
+file path=usr/share/uwsgi/examples/uwsgirouter2.py
+file path=usr/share/uwsgi/examples/uwsgirouter3.py
+file path=usr/share/uwsgi/examples/uwsgirouter4.py
+file path=usr/share/uwsgi/examples/uwsgirouter5.py
+file path=usr/share/uwsgi/examples/uwsgistatus.py
+file path=usr/share/uwsgi/examples/welcome.ini
+file path=usr/share/uwsgi/examples/welcome.py
+file path=usr/share/uwsgi/examples/welcome3.py
+file path=usr/share/uwsgi/examples/werkzeug.js
+file path=usr/share/uwsgi/examples/werkzeug.yml
+file path=usr/share/uwsgi/examples/werkzeug_strict.yml
+file path=usr/share/uwsgi/examples/xmlindex-html.xsl
+file path=usr/share/uwsgi/examples/xmlindex.ini
+file path=usr/share/uwsgi/examples/zmqgevent.ini
+license $(COPYRIGHT_FILE) license=$(COPYRIGHTS)

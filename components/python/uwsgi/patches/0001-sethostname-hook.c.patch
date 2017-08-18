@@ -1,0 +1,12 @@
+diff -r 2e6dd0616ecf core/hooks.c
+--- a/core/hooks.c	Fri Sep 23 12:21:40 2016 +0200
++++ b/core/hooks.c	Fri Sep 23 12:23:08 2016 +0200
+@@ -396,7 +396,7 @@
+ }
+ 
+ 
+-#ifdef __sun__
++#ifdef __sun4__
+ extern int sethostname(char *, int);
+ #endif
+ static int uwsgi_hook_hostname(char *arg) {
