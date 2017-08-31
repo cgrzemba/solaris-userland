@@ -1,0 +1,39 @@
+From a733ca5b0f5e5e8f8a17730c43164c338c79161e Mon Sep 17 00:00:00 2001
+From: Jan Holzhueter <jh@opencsw.org>
+Date: Tue, 29 Mar 2016 10:16:49 +0200
+Subject: [PATCH] chage_dh_param_to_2048
+
+---
+ configure.in | 2 +-
+ src/nrpe.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index f0dfa09..1993140 100644
+--- a/configure.in
++++ b/configure.in
+@@ -340,7 +340,7 @@ if test x$check_for_ssl = xyes; then
+ 				sslbin=$ssldir/bin/openssl
+ 			fi
+ 			# awk to strip off meta data at bottom of dhparam output
+-			$sslbin dhparam -C 512 | awk '/^-----/ {exit} {print}' > include/dh.h
++			$sslbin dhparam -C 2048 | awk '/^-----/ {exit} {print}' > include/dh.h
+ 		fi
+ 	fi
+ 
+diff --git a/src/nrpe.c b/src/nrpe.c
+index 381f0ac..6234492 100644
+--- a/src/nrpe.c
++++ b/src/nrpe.c
+@@ -266,7 +266,7 @@ int main(int argc, char **argv){
+ 
+ 		/* use anonymous DH ciphers */
+ 		SSL_CTX_set_cipher_list(ctx,"ADH");
+-		dh=get_dh512();
++		dh=get_dh2048();
+ 		SSL_CTX_set_tmp_dh(ctx,dh);
+ 		DH_free(dh);
+ 		if(debug==TRUE)
+-- 
+2.4.0
+
