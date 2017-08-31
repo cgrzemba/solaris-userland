@@ -1,0 +1,22 @@
+diff --git a/configure.in b/configure.in
+index 0453f69..f0dfa09 100644
+--- a/configure.in
++++ b/configure.in
+@@ -392,7 +392,7 @@ AC_ARG_WITH([nrpe_port],
+ 	[nrpe_port=5666])
+ AC_SUBST(nrpe_user)
+ AC_SUBST(nrpe_group)
+-NRPE_INSTALL_OPTS="-o $nrpe_user -g $nrpe_group"
++NRPE_INSTALL_OPTS=
+ AC_SUBST(NRPE_INSTALL_OPTS)
+ AC_SUBST(nrpe_port)
+ AC_DEFINE_UNQUOTED(DEFAULT_SERVER_PORT,$nrpe_port,[Default port for NRPE daemon])
+@@ -409,7 +409,7 @@ AC_ARG_WITH([nagios_group],
+ 	[nagios_group=nagios])
+ AC_SUBST(nagios_user)
+ AC_SUBST(nagios_group)
+-NAGIOS_INSTALL_OPTS="-o $nagios_user -g $nagios_group"
++NAGIOS_INSTALL_OPTS=
+ AC_SUBST(NAGIOS_INSTALL_OPTS)
+ 
+ # Determine target OS, version and architecture for package build macros

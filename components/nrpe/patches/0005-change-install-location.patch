@@ -1,0 +1,11 @@
+--- nrpe.0	Mo. Feb  6 11:51:53 2017
++++ a/package/solaris/pkg/nrpe	Mo. Feb  6 11:52:18 2017
+@@ -1,7 +1,7 @@
+ #!/sbin/sh
+ #
+ 
+-NRPE=/opt/nagios/bin/nrpe
++NRPE=/usr/sbin/nrpe
+ CFGFILE=/etc/nagios/nrpe.cfg
+ PIDFILE=/var/run/nrpe.pid
+ 
