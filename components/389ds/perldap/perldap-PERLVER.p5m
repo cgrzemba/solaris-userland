@@ -1,0 +1,73 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2017, cgrzemba@opencsw.org
+#
+<transform file path=usr.*/man/.+ -> default mangler.man.stability volatile>
+set name=pkg.fmri \
+    value=pkg:/library/perl-5/perldap-$(PLV)@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="Mozilla LDAP SDK Perl"
+set name=com.oracle.info.description value="Mozilla LDAP SDK Perl"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value=org.opensolaris.category.2008:Development/Perl
+set name=info.source-url value=$(HG_REPO)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+file usr/lib/$(PERL_ARCH)/perllocal.pod \
+    path=usr/perl5/$(PERLVER)/lib/pod/perllocal.pod
+dir  path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla
+dir  path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla/LDAP
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/Mozilla/LDAP/API.pm \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla/LDAP/API.pm
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/Mozilla/LDAP/Conn.pm \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla/LDAP/Conn.pm
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/Mozilla/LDAP/Entry.pm \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla/LDAP/Entry.pm
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/Mozilla/LDAP/LDIF.pm \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla/LDAP/LDIF.pm
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/Mozilla/LDAP/Utils.pm \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/Mozilla/LDAP/Utils.pm
+dir  path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto
+dir  path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla
+dir  path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla/LDAP
+dir  path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla/LDAP/API
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/auto/Mozilla/LDAP/API/.packlist \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla/LDAP/API/.packlist
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/auto/Mozilla/LDAP/API/API.bs \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla/LDAP/API/API.bs
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/auto/Mozilla/LDAP/API/API.so \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla/LDAP/API/API.so
+file usr/lib/$(PERLVER).5/$(PERL_ARCH)/auto/Mozilla/LDAP/API/autosplit.ix \
+    path=usr/perl5/site_perl/$(PERLVER)/$(PERL_ARCH)/auto/Mozilla/LDAP/API/autosplit.ix
+file usr/man/man3/Mozilla::LDAP::API.3 \
+    path=usr/share/man/man3/Mozilla::LDAP::API.3
+file usr/man/man3/Mozilla::LDAP::Conn.3 \
+    path=usr/share/man/man3/Mozilla::LDAP::Conn.3
+file usr/man/man3/Mozilla::LDAP::Entry.3 \
+    path=usr/share/man/man3/Mozilla::LDAP::Entry.3
+file usr/man/man3/Mozilla::LDAP::LDIF.3 \
+    path=usr/share/man/man3/Mozilla::LDAP::LDIF.3
+file usr/man/man3/Mozilla::LDAP::Utils.3 \
+    path=usr/share/man/man3/Mozilla::LDAP::Utils.3
+license COPYING license="MPL v2.0"

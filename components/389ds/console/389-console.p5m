@@ -1,0 +1,48 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2017, cgrzemba@opencsw.org
+#
+
+set name=pkg.fmri \
+    value=pkg:/application/389-ds/389-console@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="389 DS console"
+set name=com.oracle.info.description value="DS Console Java plugin"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value="org.opensolaris.category.2008:System/Enterprise Management"
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+file path=usr/bin/389-console
+dir  path=usr/share/lib group=sys
+dir  path=usr/share/lib/java group=sys
+file path=usr/share/lib/java/389-console-$(COMPONENT_VERSION)_en.jar
+link path=usr/share/lib/java/389-console-1.1_en.jar \
+    target=389-console-$(COMPONENT_VERSION)_en.jar
+link path=usr/share/lib/java/389-console_en.jar \
+    target=389-console-$(COMPONENT_VERSION)_en.jar
+license LICENSE license=GPLv2
+depend type=require fmri=pkg:/application/389-ds/idm-console-framework
+depend type=require fmri=pkg:/library/java/jss4
+depend type=require fmri=pkg:/library/java/ldap-jdk

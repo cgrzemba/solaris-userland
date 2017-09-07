@@ -1,0 +1,62 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2017, cgrzemba@opencsw.org
+#
+
+set name=pkg.fmri \
+    value=pkg:/library/mozldap@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="Mozilla LDAP C SDK"
+set name=com.oracle.info.description value="Mozilla LDAP C SDK"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value=org.opensolaris.category.2008:System/Libraries
+set name=info.source-url value=$(HG_REPO)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+dir  path=usr/include/mps
+dir  path=usr/include/mps/ldap
+file path=usr/include/mps/ldap/disptmpl.h
+file path=usr/include/mps/ldap/iutil.h
+file path=usr/include/mps/ldap/lber.h
+file path=usr/include/mps/ldap/ldap-deprecated.h
+file path=usr/include/mps/ldap/ldap-extension.h
+file path=usr/include/mps/ldap/ldap-platform.h
+file path=usr/include/mps/ldap/ldap-standard.h
+file path=usr/include/mps/ldap/ldap-to-be-deprecated.h
+file path=usr/include/mps/ldap/ldap.h
+file path=usr/include/mps/ldap/ldap_ssl.h
+file path=usr/include/mps/ldap/ldappr.h
+file path=usr/include/mps/ldap/ldif.h
+file path=usr/include/mps/ldap/srchpref.h
+dir  path=usr/lib/mps
+dir  path=usr/lib/mps/$(MACH64)
+file path=usr/lib/mps/$(MACH64)/libldap60.so
+file path=usr/lib/mps/$(MACH64)/libldif60.so
+file path=usr/lib/mps/$(MACH64)/libprldap60.so
+file path=usr/lib/mps/$(MACH64)/libssldap60.so
+file path=usr/lib/mps/libldap60.so
+file path=usr/lib/mps/libldif60.so
+file path=usr/lib/mps/libprldap60.so
+file path=usr/lib/mps/libssldap60.so
+license COPYING license=MPLv2
