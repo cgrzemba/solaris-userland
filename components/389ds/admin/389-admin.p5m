@@ -1,0 +1,237 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2017, cgrzemba@opencsw.org
+#
+<transform file path=usr.*/man/.+ -> default mangler.man.stability volatile>
+<transform file path=etc/dirsrv/admin-serv/*\.conf -> \
+    default preserve renamenew>
+set name=pkg.fmri \
+    value=pkg:/service/389-ds/389-admin@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="389 Admin Server"
+set name=com.oracle.info.description value="389 Admin Server"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value="org.opensolaris.category.2008:System/Enterprise Management"
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+dir  path=etc/default group=sys
+file path=etc/default/dirsrv-admin
+dir  path=etc/dirsrv
+dir  path=etc/dirsrv/admin-serv
+file path=etc/dirsrv/admin-serv/admserv.conf
+file path=etc/dirsrv/admin-serv/console.conf
+file path=etc/dirsrv/admin-serv/httpd.conf
+file path=etc/dirsrv/admin-serv/nss.conf
+file path=etc/init.d/dirsrv-admin
+file path=lib/svc/manifest/network/ds-admin.xml
+dir  path=usr/lib/$(MACH64)/dirsrv
+dir  path=usr/lib/$(MACH64)/dirsrv/cgi-bin
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ReadLog
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/admpw
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/config
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/download
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_create
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_listdb
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_remove
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_restart
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_shutdown
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_snmpctrl
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_start
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ds_unregister
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/dsconfig
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/help
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/htmladmin
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/monreplication
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/repl-monitor-cgi.pl
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/restartsrv
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/sec-activate
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/security
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/start_config_ds
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/statpingserv
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/statusping
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/stopsrv
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/ugdsconfig
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/viewdata
+file path=usr/lib/$(MACH64)/dirsrv/cgi-bin/viewlog
+dir  path=usr/lib/$(MACH64)/dirsrv/modules
+file path=usr/lib/$(MACH64)/dirsrv/modules/mod_admserv.so
+file path=usr/lib/$(MACH64)/dirsrv/modules/mod_restartd.so
+dir  path=usr/lib/$(MACH64)/dirsrv/perl
+file path=usr/lib/$(MACH64)/dirsrv/perl/ASDialogs.pm
+file path=usr/lib/$(MACH64)/dirsrv/perl/AdminMigration.pm
+file path=usr/lib/$(MACH64)/dirsrv/perl/AdminServer.pm
+file path=usr/lib/$(MACH64)/dirsrv/perl/AdminUtil.pm
+file path=usr/lib/$(MACH64)/dirsrv/perl/ConfigDSDialogs.pm
+file path=usr/lib/$(MACH64)/dirsrv/perl/RegDSDialogs.pm
+link path=usr/lib/$(MACH64)/libds-admin-serv.so target=libds-admin-serv.so.0.0.0
+link path=usr/lib/$(MACH64)/libds-admin-serv.so.0 \
+    target=libds-admin-serv.so.0.0.0
+file path=usr/lib/$(MACH64)/libds-admin-serv.so.0.0.0
+file path=usr/sbin/ds_removal
+file path=usr/sbin/ds_unregister
+file path=usr/sbin/migrate-ds-admin.pl
+file path=usr/sbin/register-ds-admin.pl
+file path=usr/sbin/remove-ds-admin.pl
+file path=usr/sbin/restart-ds-admin
+file path=usr/sbin/setup-ds-admin.pl
+file path=usr/sbin/start-ds-admin
+file path=usr/sbin/stop-ds-admin
+dir  path=usr/share/dirsrv
+dir  path=usr/share/dirsrv/data
+file path=usr/share/dirsrv/data/00nsroot_backend.ldif.tmpl
+file path=usr/share/dirsrv/data/01nsroot.ldif.tmpl
+file path=usr/share/dirsrv/data/02globalpreferences.ldif.tmpl
+file path=usr/share/dirsrv/data/10dsdata.ldif.tmpl
+file path=usr/share/dirsrv/data/10rm_dsdata.ldif.tmpl
+file path=usr/share/dirsrv/data/11dstasks.ldif.tmpl
+file path=usr/share/dirsrv/data/12dsconfig.mod.tmpl
+file path=usr/share/dirsrv/data/13dsschema.mod.tmpl
+file path=usr/share/dirsrv/data/14dsmonitor.mod.tmpl
+file path=usr/share/dirsrv/data/15dspta.mod.tmpl
+file path=usr/share/dirsrv/data/16dssuffixadmin.mod.tmpl
+file path=usr/share/dirsrv/data/20asdata.ldif.tmpl
+file path=usr/share/dirsrv/data/21astasks.ldif.tmpl
+file path=usr/share/dirsrv/data/22ascommands.ldif.tmpl
+file path=usr/share/dirsrv/data/admserv_dsgw.html
+file path=usr/share/dirsrv/data/admserv_orgchart.html
+file path=usr/share/dirsrv/data/admserv_phonebook.html
+file path=usr/share/dirsrv/data/asmigrate.ldif.tmpl
+dir  path=usr/share/dirsrv/html
+file path=usr/share/dirsrv/html/admserv.html
+file path=usr/share/dirsrv/html/htmladmin.html
+file path=usr/share/dirsrv/html/monreplication.html
+file path=usr/share/dirsrv/html/viewdata.html
+file path=usr/share/dirsrv/html/viewlog.html
+dir  path=usr/share/dirsrv/icons
+file path=usr/share/dirsrv/icons/16space.gif
+file path=usr/share/dirsrv/icons/N24b.gif
+file path=usr/share/dirsrv/icons/adminics.gif
+file path=usr/share/dirsrv/icons/cert16.gif
+file path=usr/share/dirsrv/icons/directorysmall.gif
+file path=usr/share/dirsrv/icons/dms.jpg
+file path=usr/share/dirsrv/icons/domain16.gif
+file path=usr/share/dirsrv/icons/enterpriseic.gif
+file path=usr/share/dirsrv/icons/goto.gif
+file path=usr/share/dirsrv/icons/group2.gif
+file path=usr/share/dirsrv/icons/help.gif
+file path=usr/share/dirsrv/icons/host.gif
+file path=usr/share/dirsrv/icons/hr.gif
+file path=usr/share/dirsrv/icons/messagingic.gif
+file path=usr/share/dirsrv/icons/oldservic.gif
+file path=usr/share/dirsrv/icons/spacer.gif
+file path=usr/share/dirsrv/icons/togoff.gif
+file path=usr/share/dirsrv/icons/togon.gif
+dir  path=usr/share/dirsrv/inf
+file path=usr/share/dirsrv/inf/admin.inf
+file path=usr/share/dirsrv/inf/adminserver.map
+file path=usr/share/dirsrv/inf/asmigrate.map
+file path=usr/share/dirsrv/inf/configdsroot.map
+file path=usr/share/dirsrv/inf/dirserver.map
+file path=usr/share/dirsrv/inf/dssuffixadmin.map
+file path=usr/share/dirsrv/inf/register_param.map
+file path=usr/share/dirsrv/inf/setup.inf
+file path=usr/share/dirsrv/inf/updateconsoleinfo.map
+dir  path=usr/share/dirsrv/manual
+dir  path=usr/share/dirsrv/manual/help
+file path=usr/share/dirsrv/manual/help/frameset.html
+file path=usr/share/dirsrv/manual/help/head.html
+file path=usr/share/dirsrv/manual/help/help.js
+file path=usr/share/dirsrv/manual/help/library.html
+dir  path=usr/share/dirsrv/properties
+dir  path=usr/share/dirsrv/properties/admpw
+file path=usr/share/dirsrv/properties/admpw/en.res
+file path=usr/share/dirsrv/properties/admpw/en_US.res
+file path=usr/share/dirsrv/properties/admpw/root.res
+dir  path=usr/share/dirsrv/properties/cgicommon
+file path=usr/share/dirsrv/properties/cgicommon/en.res
+file path=usr/share/dirsrv/properties/cgicommon/en_US.res
+file path=usr/share/dirsrv/properties/cgicommon/root.res
+dir  path=usr/share/dirsrv/properties/config
+file path=usr/share/dirsrv/properties/config/en.res
+file path=usr/share/dirsrv/properties/config/en_US.res
+file path=usr/share/dirsrv/properties/config/root.res
+file path=usr/share/dirsrv/properties/ds_create.res
+file path=usr/share/dirsrv/properties/ds_remove.res
+dir  path=usr/share/dirsrv/properties/dsconfig
+file path=usr/share/dirsrv/properties/dsconfig/en.res
+file path=usr/share/dirsrv/properties/dsconfig/en_US.res
+file path=usr/share/dirsrv/properties/dsconfig/root.res
+dir  path=usr/share/dirsrv/properties/htmladmin
+file path=usr/share/dirsrv/properties/htmladmin/en.res
+file path=usr/share/dirsrv/properties/htmladmin/en_US.res
+file path=usr/share/dirsrv/properties/htmladmin/root.res
+file path=usr/share/dirsrv/properties/migrate-ds-admin.res
+dir  path=usr/share/dirsrv/properties/monreplication
+file path=usr/share/dirsrv/properties/monreplication/en.res
+file path=usr/share/dirsrv/properties/monreplication/en_US.res
+file path=usr/share/dirsrv/properties/monreplication/root.res
+file path=usr/share/dirsrv/properties/register-ds-admin.res
+dir  path=usr/share/dirsrv/properties/restartsrv
+file path=usr/share/dirsrv/properties/restartsrv/en.res
+file path=usr/share/dirsrv/properties/restartsrv/en_US.res
+file path=usr/share/dirsrv/properties/restartsrv/root.res
+dir  path=usr/share/dirsrv/properties/sec-activate
+file path=usr/share/dirsrv/properties/sec-activate/en.res
+file path=usr/share/dirsrv/properties/sec-activate/en_US.res
+file path=usr/share/dirsrv/properties/sec-activate/root.res
+dir  path=usr/share/dirsrv/properties/security
+file path=usr/share/dirsrv/properties/security/en.res
+file path=usr/share/dirsrv/properties/security/en_US.res
+file path=usr/share/dirsrv/properties/security/root.res
+file path=usr/share/dirsrv/properties/setup-ds-admin.res
+dir  path=usr/share/dirsrv/properties/stopsrv
+file path=usr/share/dirsrv/properties/stopsrv/en.res
+file path=usr/share/dirsrv/properties/stopsrv/en_US.res
+file path=usr/share/dirsrv/properties/stopsrv/root.res
+dir  path=usr/share/dirsrv/properties/ugdsconfig
+file path=usr/share/dirsrv/properties/ugdsconfig/en.res
+file path=usr/share/dirsrv/properties/ugdsconfig/en_US.res
+file path=usr/share/dirsrv/properties/ugdsconfig/root.res
+dir  path=usr/share/dirsrv/properties/viewdata
+file path=usr/share/dirsrv/properties/viewdata/en.res
+file path=usr/share/dirsrv/properties/viewdata/en_US.res
+file path=usr/share/dirsrv/properties/viewdata/root.res
+dir  path=usr/share/dirsrv/properties/viewlog
+file path=usr/share/dirsrv/properties/viewlog/en.res
+file path=usr/share/dirsrv/properties/viewlog/en_US.res
+file path=usr/share/dirsrv/properties/viewlog/root.res
+dir  path=usr/share/dirsrv/updates-admin
+file path=usr/share/dirsrv/updates-admin/25rebrand.pl
+file path=usr/share/dirsrv/updates-admin/30updateglobalpref.pl
+file path=usr/share/dirsrv/updates-admin/makeUpgradeTar.sh
+file path=usr/share/man/man8/ds_removal.8
+file path=usr/share/man/man8/ds_unregister.8
+file path=usr/share/man/man8/migrate-ds-admin.pl.8
+file path=usr/share/man/man8/register-ds-admin.pl.8
+file path=usr/share/man/man8/remove-ds-admin.pl.8
+file path=usr/share/man/man8/restart-ds-admin.8
+file path=usr/share/man/man8/setup-ds-admin.pl.8
+file path=usr/share/man/man8/start-ds-admin.8
+file path=usr/share/man/man8/stop-ds-admin.8
+license LICENSE license=GPLv2
+depend type=require fmri=pkg:/application/389-ds/389-admin-console
+depend type=require fmri=pkg:/application/389-ds/389-ds-console
+depend type=require fmri=pkg:/service/389-ds/389-ds-base
+

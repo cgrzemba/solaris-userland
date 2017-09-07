@@ -1,0 +1,150 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2017, cgrzemba@opencsw.org
+#
+
+set name=pkg.fmri \
+    value=pkg:/application/389-ds/389-admin-console@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="IDM Console Plugin"
+set name=com.oracle.info.description value="IDM Console Plugin"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value="org.opensolaris.category.2008:System/Enterprise Management"
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+dir  path=usr/share/dirsrv
+dir  path=usr/share/dirsrv/html
+dir  path=usr/share/dirsrv/html/java
+file path=usr/share/dirsrv/html/java/389-admin-$(COMPONENT_VERSION).jar
+file path=usr/share/dirsrv/html/java/389-admin-$(COMPONENT_VERSION)_en.jar
+link path=usr/share/dirsrv/html/java/389-admin-1.1.jar \
+    target=389-admin-$(COMPONENT_VERSION).jar
+link path=usr/share/dirsrv/html/java/389-admin-1.1_en.jar \
+    target=389-admin-$(COMPONENT_VERSION)_en.jar
+dir  path=usr/share/dirsrv/manual
+dir  path=usr/share/dirsrv/manual/en
+dir  path=usr/share/dirsrv/manual/en/admin
+file path=usr/share/dirsrv/manual/en/admin/footer.html
+file path=usr/share/dirsrv/manual/en/admin/header.html
+dir  path=usr/share/dirsrv/manual/en/admin/help
+file path=usr/share/dirsrv/manual/en/admin/help/access_permissions_help.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_crl_ckl.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_edit_community.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_edit_host_name.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_edit_ip_address.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_edit_manager.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_host_filter.html
+file path=usr/share/dirsrv/manual/en/admin/help/add_users_and_groups.html
+file path=usr/share/dirsrv/manual/en/admin/help/administration_domain_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/administration_express.html
+file path=usr/share/dirsrv/manual/en/admin/help/administration_express_logs.html
+file path=usr/share/dirsrv/manual/en/admin/help/administration_express_server_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/browse_directory.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_information_certification_path.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_information_detail.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_information_general.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_install_wizard_certificate_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_install_wizard_certificate_location.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_install_wizard_certificate_type.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_install_wizard_intended_purpose.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_request_install_wizard_token_password.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_request_wizard_introduction.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_request_wizard_key_signing_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_request_wizard_request_submission.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificate_request_wizard_requestor_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/certificates_group.html
+file path=usr/share/dirsrv/manual/en/admin/help/change_directory.html
+file path=usr/share/dirsrv/manual/en/admin/help/change_security_device_password.html
+file path=usr/share/dirsrv/manual/en/admin/help/cipher_preference_ssl_2.0.html
+file path=usr/share/dirsrv/manual/en/admin/help/cipher_preference_ssl_3.0.html
+file path=usr/share/dirsrv/manual/en/admin/help/cipher_preference_tls.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_administration_server_access.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_administration_server_configuration_ds.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_administration_server_encryption.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_administration_server_network.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_administration_server_user_ds.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_custom_views.html
+file path=usr/share/dirsrv/manual/en/admin/help/configure_security_modules.html
+file path=usr/share/dirsrv/manual/en/admin/help/construct_and_test_ldap_url.html
+file path=usr/share/dirsrv/manual/en/admin/help/construct_ldap_url.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_group_general.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_group_languages.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_group_members_certificates_group.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_group_members_dynamic_group.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_group_members_static_group.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_group_posix_group.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_new_administration_domain.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_organizational_unit.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_organizational_unit_languages.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_organizational_unit_languages_with_pronunciation.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_user_administrator.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_user_administrator_languages.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_user_administrator_licenses.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_user_administrator_nt_user.html
+file path=usr/share/dirsrv/manual/en/admin/help/create_user_administrator_posix_user.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_aci_hosts.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_aci_manual_mode.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_aci_rights.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_aci_targets.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_aci_times.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_aci_users_groups.html
+file path=usr/share/dirsrv/manual/en/admin/help/edit_view.html
+file path=usr/share/dirsrv/manual/en/admin/help/host_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/import_keys_and_certificates_alias_selection.html
+file path=usr/share/dirsrv/manual/en/admin/help/import_keys_and_certificates_confirmation.html
+file path=usr/share/dirsrv/manual/en/admin/help/import_keys_and_certificates_source_location.html
+file path=usr/share/dirsrv/manual/en/admin/help/install_security_module.html
+file path=usr/share/dirsrv/manual/en/admin/help/license_tracking.html
+file path=usr/share/dirsrv/manual/en/admin/help/list_crl_ckl.html
+file path=usr/share/dirsrv/manual/en/admin/help/logging_options.html
+file path=usr/share/dirsrv/manual/en/admin/help/manage_access_control.html
+file path=usr/share/dirsrv/manual/en/admin/help/manage_certificates_ca_certs.html
+file path=usr/share/dirsrv/manual/en/admin/help/manage_certificates_revoked_certs.html
+file path=usr/share/dirsrv/manual/en/admin/help/manage_certificates_server_certs.html
+file path=usr/share/dirsrv/manual/en/admin/help/merge_configuration_directory_server_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/migrate_keys_and_certificates.html
+file path=usr/share/dirsrv/manual/en/admin/help/migrate_server_configuration.html
+file path=usr/share/dirsrv/manual/en/admin/help/new_view.html
+file path=usr/share/dirsrv/manual/en/admin/help/preferences_fonts.html
+file path=usr/share/dirsrv/manual/en/admin/help/preferences_settings.html
+file path=usr/share/dirsrv/manual/en/admin/help/preferences_ui_permissions.html
+file path=usr/share/dirsrv/manual/en/admin/help/replication_monitor.html
+file path=usr/share/dirsrv/manual/en/admin/help/save_font_profile.html
+file path=usr/share/dirsrv/manual/en/admin/help/search_users_and_groups.html
+file path=usr/share/dirsrv/manual/en/admin/help/search_users_and_groups_advanced.html
+file path=usr/share/dirsrv/manual/en/admin/help/security_warning.html
+file path=usr/share/dirsrv/manual/en/admin/help/select_font.html
+file path=usr/share/dirsrv/manual/en/admin/help/select_organizational_unit.html
+file path=usr/share/dirsrv/manual/en/admin/help/select_server_for_migration.html
+file path=usr/share/dirsrv/manual/en/admin/help/select_target_servers_for_cloning.html
+file path=usr/share/dirsrv/manual/en/admin/help/server_group_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/server_information.html
+file path=usr/share/dirsrv/manual/en/admin/help/set_permission_dialog.html
+file path=usr/share/dirsrv/manual/en/admin/help/set_security_device_password.html
+file path=usr/share/dirsrv/manual/en/admin/help/set_security_device_password_change_security_device_password.html
+file path=usr/share/dirsrv/manual/en/admin/help/ssl_token_password.html
+file path=usr/share/dirsrv/manual/en/admin/help/users_and_groups.html
+file path=usr/share/dirsrv/manual/en/admin/tokens.map
+license LICENSE license=GPLv2
