@@ -1,0 +1,31 @@
+diff --git a/perldap/API.xs b/perldap/API.xs
+index afd41ff..dcd7f13 100644
+--- a/perldap/API.xs
++++ b/perldap/API.xs
+@@ -1335,7 +1338,7 @@ ldap_parse_entrychange_control(ld,ctrls,chgtypep,prevdnp,chgnumpresentp,chgnump)
+ 	int 		&chgtypep = NO_INIT
+ 	char *		&prevdnp = NO_INIT
+ 	int 		&chgnumpresentp = NO_INIT
+-	long 		&chgnump = NO_INIT
++	int 		&chgnump = NO_INIT
+ 	OUTPUT:
+ 	RETVAL
+ 	chgtypep
+@@ -1399,7 +1402,7 @@ int
+ ldap_parse_sort_control(ld,ctrls,result,attribute)
+ 	LDAP *		ld
+ 	LDAPControl **	ctrls
+-	unsigned long 	&result = NO_INIT
++	int &result = NO_INIT
+ 	char *		&attribute = NO_INIT
+ 	OUTPUT:
+ 	RETVAL
+@@ -1410,7 +1413,7 @@ int
+ ldap_parse_virtuallist_control(ld,ctrls,target_posp,list_sizep,errcodep)
+ 	LDAP *		ld
+ 	LDAPControl **	ctrls
+-	unsigned long 	&target_posp = NO_INIT
++	int &target_posp = NO_INIT
+ 	unsigned long 	&list_sizep = NO_INIT
+ 	int		&errcodep = NO_INIT
+ 	OUTPUT:

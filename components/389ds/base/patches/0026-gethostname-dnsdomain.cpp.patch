@@ -1,0 +1,13 @@
+diff --git a/lib/base/dnsdmain.cpp b/lib/base/dnsdmain.cpp
+index 545f617..1fe8f77 100644
+--- a/lib/base/dnsdmain.cpp
++++ b/lib/base/dnsdmain.cpp
+@@ -40,7 +40,7 @@ extern int getdomainname(char *, size_t);
+ #else 
+ extern int getdomainname(char *, int);
+ #endif /* Linux */
+-#if defined(HPUX) || defined(Linux) || defined(SOLARIS_GCC)
++#if defined(HPUX) || defined(Linux) || defined(SOLARIS)
+ extern int gethostname (char *name, size_t namelen);
+ #else
+ extern int gethostname (char *name, int namelen);

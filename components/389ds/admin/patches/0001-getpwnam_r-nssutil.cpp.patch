@@ -1,0 +1,13 @@
+diff --git a/lib/base/nscputil.cpp b/lib/base/nscputil.cpp
+index 1fb6a27..bf39940 100644
+--- a/lib/base/nscputil.cpp
++++ b/lib/base/nscputil.cpp
+@@ -941,7 +941,7 @@ util_getpwnam(const char *name, struct passwd *result, char *buffer,
+     return ((int)getpwnam_r(name, result, buffer, buflen) == 0 ? result : NULL);
+   #endif
+ #else
+-    return getpwnam_r(name, result, buffer, buflen);
++    return ((int)getpwnam_r(name, result, buffer, buflen, &result) == 0 ? result : NULL);
+ #endif /* AIX */
+ 
+ #else

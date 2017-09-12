@@ -1,0 +1,26 @@
+diff --git a/m4/nspr.m4 b/m4/nspr.m4
+index 22178a3..76b946e 100644
+--- a/m4/nspr.m4
++++ b/m4/nspr.m4
+@@ -55,7 +55,7 @@ AC_ARG_WITH(nspr-lib, AS_HELP_STRING([--with-nspr-lib=PATH],[Netscape Portable R
+   if test -d "$withval"
+   then
+     AC_MSG_RESULT([using $withval])
+-    nspr_lib="-L$withval"
++    nspr_lib="-L$withval -R$withval"
+     nspr_libdir="$withval"
+   else
+     echo
+diff --git a/m4/nss.m4 b/m4/nss.m4
+index 7cdb8a0..e549d07 100644
+--- a/m4/nss.m4
++++ b/m4/nss.m4
+@@ -55,7 +55,7 @@ AC_ARG_WITH(nss-lib, AS_HELP_STRING([--with-nss-lib=PATH],[Network Security Serv
+   if test -d "$withval"
+   then
+     AC_MSG_RESULT([using $withval])
+-    nss_lib="-L$withval"
++    nss_lib="-L$withval -R$withval"
+     nss_libdir="$withval"
+   else
+     echo

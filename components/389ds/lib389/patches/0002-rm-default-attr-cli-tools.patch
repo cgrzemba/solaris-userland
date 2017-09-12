@@ -1,0 +1,26 @@
+diff --git a/cli/dsconf b/cli/dsconf
+index 1a105ed..dde9040 100755
+--- a/cli/dsconf
++++ b/cli/dsconf
+@@ -33,7 +33,7 @@ if __name__ == '__main__':
+ 
+     defbase = ldap.get_option(ldap.OPT_DEFBASE)
+ 
+-    parser = argparse.ArgumentParser(allow_abbrev=True)
++    parser = argparse.ArgumentParser()
+     # Build the base ldap options, this keeps in unified.
+ 
+     # Can we get default options for these from .rc file?
+diff --git a/cli/dsidm b/cli/dsidm
+index def34a8..d5d8afe 100755
+--- a/cli/dsidm
++++ b/cli/dsidm
+@@ -34,7 +34,7 @@ if __name__ == '__main__':
+ 
+     defbase = ldap.get_option(ldap.OPT_DEFBASE)
+ 
+-    parser = argparse.ArgumentParser(allow_abbrev=True)
++    parser = argparse.ArgumentParser()
+     # First, add the LDAP options
+ 
+     parser.add_argument('instance',

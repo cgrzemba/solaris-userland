@@ -1,0 +1,50 @@
+diff --git a/ldap/systools/idsktune.c b/ldap/systools/idsktune.c
+index 08b7f12..cf91fad 100644
+--- a/ldap/systools/idsktune.c
++++ b/ldap/systools/idsktune.c
+@@ -1474,19 +1474,20 @@ static void sun_check_network_device(void)
+     if (devfd == -1) {
+         switch (errno) {
+ 
+-    case EACCES:
+-        if (flag_debug) {
+-            printf("DEBUG  : got EACCES opening %s\n", SUN_NETWORK_DEVICE);
+-        }
+-        break;
+-    case ENOENT:
+-        if (flag_debug) {
+-            printf("DEBUG  : got ENOENT opening %s\n", SUN_NETWORK_DEVICE);
+-        }
+-        break;
+-    default:
+-        if (flag_debug) {
+-            printf("DEBUG  : got %d opening %s\n", errno,SUN_NETWORK_DEVICE);
++        case EACCES:
++            if (flag_debug) {
++                printf("DEBUG  : got EACCES opening %s\n", SUN_NETWORK_DEVICE);
++            }
++            break;
++        case ENOENT:
++            if (flag_debug) {
++                printf("DEBUG  : got ENOENT opening %s\n", SUN_NETWORK_DEVICE);
++            }
++            break;
++        default:
++            if (flag_debug) {
++                printf("DEBUG  : got %d opening %s\n", errno,SUN_NETWORK_DEVICE);
++            }
+         }
+         return;
+     } else {
+@@ -1501,8 +1502,9 @@ static void sun_check_network_device(void)
+         if (flag_debug) printf("DEBUG  : %s link_speed variable not available\n",SUN_NETWORK_DEVICE);
+     } else {
+     /* XXX look at link speed */
+-    if (flag_debug) {
+-        printf("DEBUG  : %s link_speed is %d\n",SUN_NETWORK_DEVICE,ls);
++        if (flag_debug) {
++            printf("DEBUG  : %s link_speed is %d\n",SUN_NETWORK_DEVICE,ls);
++        }
+     }
+ }
+ #endif

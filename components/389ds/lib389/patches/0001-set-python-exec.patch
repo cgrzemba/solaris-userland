@@ -1,0 +1,40 @@
+diff --git a/cli/dsconf b/cli/dsconf
+index 168ecdf..7e83a7c 100755
+--- a/cli/dsconf
++++ b/cli/dsconf
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python2.7
+ 
+ # --- BEGIN COPYRIGHT BLOCK ---
+ # Copyright (C) 2016 Red Hat, Inc.
+diff --git a/cli/dscreate b/cli/dscreate
+index 1b1ef7a..d4a0f68 100755
+--- a/cli/dscreate
++++ b/cli/dscreate
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python2.7
+ 
+ # --- BEGIN COPYRIGHT BLOCK ---
+ # Copyright (C) 2016 Red Hat, Inc.
+diff --git a/cli/dsctl b/cli/dsctl
+index fed1a96..d920687 100755
+--- a/cli/dsctl
++++ b/cli/dsctl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python2.7
+ 
+ # --- BEGIN COPYRIGHT BLOCK ---
+ # Copyright (C) 2016 Red Hat, Inc.
+diff --git a/cli/dsidm b/cli/dsidm
+index 996b71e..6f41a3e 100755
+--- a/cli/dsidm
++++ b/cli/dsidm
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python2.7
+ 
+ # --- BEGIN COPYRIGHT BLOCK ---
+ # Copyright (C) 2016, William Brown <william at blackhats.net.au>
