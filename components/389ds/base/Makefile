@@ -26,10 +26,10 @@
 PATH=$(SPRO_VROOT)/bin:$(GNUBIN):$(USRBINDIR)
 
 COMPONENT_NAME=		389-ds-base
-COMPONENT_VERSION=	1.3.5.17
+COMPONENT_VERSION=	1.3.5.19
 COMPONENT_PROJECT_URL=	http://directory.fedoraproject.org
 COMPONENT_ARCHIVE_HASH= \
-    sha256:522420b6decc162ed5d57ca913753b48e4bd7137fa0eb1bbc3e21e45923b1819
+    sha256:ad55aadd4155cabdb7cc66dbca3bbe43faf865750da01032c9a1f8ed3a2136e4
 COMPONENT_ARCHIVE = $(COMPONENT_NAME)-$(COMPONENT_VERSION).tar.bz2
 COMPONENT_ARCHIVE_URL=	http://directory.fedoraproject.org/binaries/$(COMPONENT_ARCHIVE)
 COMPONENT_BUGDB=	
@@ -50,18 +50,11 @@ COMPILER = gcc
 
 CONFIGURE_ENV +=	PYTHONPROG=$(PYTHON.$(BITS))
 
-# CONFIGURE_OPTIONS += --with-ldapsdk-inc=$(USRINCDIR)/dirsrv 
-# CONFIGURE_OPTIONS += --with-ldapsdk-lib=$(libdir)
-# CONFIGURE_OPTIONS += --with-ldapsdk-bin=$(prefix)/dirsrv/bin
-# CONFIGURE_OPTIONS += --with-ldapsdk-bin=$(bindir)
-# CONFIGURE_OPTIONS += --with-openldap=$(prefix)
 CONFIGURE_OPTIONS += --sysconfdir=/etc
 CONFIGURE_OPTIONS += --localstatedir=/var
 CONFIGURE_OPTIONS += --with-openldap-inc=$(USRINCDIR)/openldap
 CONFIGURE_OPTIONS += --with-openldap-lib=$(USRLIBDIR)/$(MACH64)
 CONFIGURE_OPTIONS += --with-openldap-bin=$(USRLIBDIR)/openldap/bin
-# CONFIGURE_OPTIONS += --with-db-inc=$(prefix)/bdb48/include 
-# CONFIGURE_OPTIONS += --with-db-lib=$(abspath $(prefix)/bdb48/lib/$(MM_LIBDIR))
 CONFIGURE_OPTIONS += --with-sasl-inc=$(USRINCDIR)/sasl2 
 CONFIGURE_OPTIONS += --with-sasl-lib=$(USRLIBDIR)/sasl2/$(MACH64)
 CONFIGURE_OPTIONS += --with-nss-lib=$(USRLIBDIR)/mps/$(MACH64)
@@ -70,7 +63,8 @@ CONFIGURE_OPTIONS += --with-nspr-lib=$(USRLIBDIR)/mps/$(MACH64)
 CONFIGURE_OPTIONS += --with-nspr-inc=$(USRINCDIR)/mps
 # to satisfy pkgsend resolve
 CONFIGURE_OPTIONS += --with-pythonexec=/usr/bin/python2.7
-CONFIGURE_OPTIONS += --enable-debug
+# CONFIGURE_OPTIONS += --enable-debug
+# CONFIGURE_OPTIONS += --enable-cmocka
 
 COMPONENT_PRE_CONFIGURE_ACTION = \
 	($(CLONEY) $(SOURCE_DIR) $(@D))
