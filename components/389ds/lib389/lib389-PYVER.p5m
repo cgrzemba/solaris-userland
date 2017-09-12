@@ -1,0 +1,194 @@
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License (the "License").
+# You may not use this file except in compliance with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+
+#
+# Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
+#
+<transform dir path=usr/lib/python([0-9.]+)?.*pyc$ -> drop>
+set name=pkg.fmri \
+    value=pkg:/library/python/lib389-$(PYV)@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary \
+    value="tools and libraries for testing 389 Directory Server"
+set name=com.oracle.info.description \
+    value="tools and libraries for testing 389 Directory Server"
+set name=com.oracle.info.tpno value=$(TPNO)
+set name=info.classification \
+    value=org.opensolaris.category.2008:Development/Python
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.arc-caseid value=PSARC/YYYY/XXX
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+dir  path=usr/lib/python$(PYVER)
+dir  path=usr/lib/python$(PYVER)/vendor-packages
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389-$(COMPONENT_VERSION)-py$(PYVER).egg-info
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389-$(COMPONENT_VERSION)-py$(PYVER).egg-info/PKG-INFO
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389-$(COMPONENT_VERSION)-py$(PYVER).egg-info/SOURCES.txt
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389-$(COMPONENT_VERSION)-py$(PYVER).egg-info/dependency_links.txt
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389-$(COMPONENT_VERSION)-py$(PYVER).egg-info/requires.txt
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389-$(COMPONENT_VERSION)-py$(PYVER).egg-info/top_level.txt
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/_constants.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/_controls.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/_entry.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/_ldifconn.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/_mapped_object.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/_replication.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/aci.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/agreement.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/backend.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/changelog.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_base
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_base/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_base/dsrc.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/backend.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/health.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/plugin.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/plugins
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/plugins/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/plugins/memberof.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_conf/schema.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_ctl
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_ctl/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_ctl/dbtasks.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_ctl/instance.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/account.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/group.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/initialise.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/organisationalunit.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/posixgroup.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/cli_idm/user.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/clitools
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/clitools/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/config.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/configurations
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/configurations/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/configurations/config.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/configurations/config_001003006.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/configurations/sample.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/dirsrv_log.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/ds_instance.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/dseldif.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/exceptions.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/extended_operations.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/account.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/domain.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/group.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/organisationalunit.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/posixgroup.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/services.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/idm/user.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/index.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/instance
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/instance/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/instance/options.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/instance/setup.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/ldclt.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/lint.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/mappingTree.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/mit_krb5.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/monitor.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/nss_ssl.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/passwd.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/paths.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/plugins.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/properties.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/replica.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/repltools.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/rootdse.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/sasl.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/schema.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/suffix.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tasks.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/aci_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/agreement_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/backend_test.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/adm_instance_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/conf_backend_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/conf_plugin_test.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/conf_plugins
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/conf_plugins/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/conf_plugins/memberof_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/ctl_dbtasks_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/cli/dsrc_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/config.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/config_compare_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/config_test.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/configurations
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/configurations/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/configurations/config_001003006_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/conftest.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dereference_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dirsrv_log_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dirsrv_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dsadmin_basic_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dsadmin_create_remove_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dsadmin_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/dseldif_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/effective_rights_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/entry_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/healthcheck_test.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/account_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/services_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/user_and_group_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/user_compare_i2_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/user_compare_m2Repl_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/idm/user_compare_st_test.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/instance
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/instance/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/instance/setup_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/krb5_create_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/ldclt_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/mappingTreeLegacy_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/mappingtree_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/nss_ssl_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/paths_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/plugin_test.py
+dir  path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/plugins
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/plugins/__init__.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/plugins/memberof_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/plugins/utils.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/replica_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/schema_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/suffix_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/test_module_proxy.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/tls_external_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tests/utils_test.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/tools.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/topologies.py
+file path=usr/lib/python$(PYVER)/vendor-packages/lib389/utils.py
+file path=usr/sbin/dsconf pkg.depend.bypass-generate=.*/ldap.*
+file path=usr/sbin/dscreate
+file path=usr/sbin/dsctl
+file path=usr/sbin/dsidm pkg.depend.bypass-generate=.*/ldap.*
+license LICENSE license=GPLv3
