@@ -1,0 +1,22 @@
+diff --git a/configure.in b/configure.in
+index ff00d4a..7b63025 100644
+--- a/c-sdk/configure.in
++++ b/c-sdk/configure.in
+@@ -2003,7 +2003,7 @@ mips-sony-newsos*)
+             CXX="$CXX -m64"
+         fi
+         LD='$(CC)'
+-        DSO_LDOPTS='-shared -Wl,-soname -Wl,$(notdir $@)'
++        DSO_LDOPTS='-shared -Wl,-soname -Wl,$(notdir $@) -Wl,-R/usr/lib/mps$(BARCH)'
+         DSO_CFLAGS=-fPIC
+         CFLAGS="$CFLAGS -Wall"
+         CXXFLAGS="$CXXFLAGS -Wall"
+@@ -2014,7 +2014,7 @@ mips-sony-newsos*)
+     else
+         LD=/usr/ccs/bin/ld
+         RANLIB=/usr/ccs/bin/ranlib
+-    	DSO_LDOPTS='-G -h $(notdir $@)'
++    	DSO_LDOPTS='-G -h $(notdir $@) -R/usr/lib/mps$(BARCH)'
+         DSO_CFLAGS=-KPIC
+     	if test -n "$USE_64"; then
+     		if test "$OS_TEST" = "i86pc"; then

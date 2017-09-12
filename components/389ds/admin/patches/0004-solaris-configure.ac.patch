@@ -1,0 +1,39 @@
+diff --git a/configure.ac b/configure.ac
+index e16b7d8..5ad78bd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -192,7 +192,7 @@ case $host in
+     # HPUX doesn't use /etc for this
+     initdir=/init.d
+ 	;;
+-  sparc-sun-solaris*)
++  *-*-solaris*)
+     AC_DEFINE([XP_UNIX], [1], [UNIX])
+     AC_DEFINE([SVR4], [1], [SVR4])
+     AC_DEFINE([__svr4], [1], [SVR4])
+@@ -201,22 +201,20 @@ case $host in
+     AC_DEFINE([CPU_sparc], [], [cpu type sparc])
+     AC_DEFINE([OS_solaris], [1], [OS SOLARIS])
+     AC_DEFINE([sunos5], [1], [SunOS5])
+-    AC_DEFINE([OSVERSION], [509], [OS version])
+     AC_DEFINE([_REENTRANT], [1], [_REENTRANT])
+ dnl socket nsl and dl are required to link several programs
+     LIBSOCKET=-lsocket
+     AC_SUBST([LIBSOCKET], [$LIBSOCKET])
+     LIBNSL=-lnsl
+     AC_SUBST([LIBNSL], [$LIBNSL])
+-dnl Cstd and Crun are required to link any C++ related code (ICU)
+-    LIBCSTD=-lCstd
++    LIBCSTD=
+     AC_SUBST([LIBCSTD], [$LIBCSTD])
+-    LIBCRUN=-lCrun
++    LIBCRUN=
+     AC_SUBST([LIBCRUN], [$LIBCRUN])
+     CXXLINK_REQUIRED=1
+     platform="solaris"
+     # assume 64 bit
+-    perlexec='/usr/lib/sparcv9/dirsec/perl5x/bin/perl'
++    perlexec='/usr/bin/perl'
+     initdir='$(sysconfdir)/init.d'
+ 	;;
+   *)

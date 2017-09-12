@@ -1,0 +1,19 @@
+diff --git a/org/mozilla/jss/CryptoManager.java b/org/mozilla/jss/CryptoManager.java
+index 9cc50d9..bc6b750 100644
+--- a/org/mozilla/jss/CryptoManager.java
++++ b/org/mozilla/jss/CryptoManager.java
+@@ -1477,12 +1477,12 @@ public final class CryptoManager implements TokenSupplier
+     {
+         if( ! mNativeLibrariesLoaded ) {
+             try { // 64 bit rhel/fedora
+-                System.load( "/usr/lib64/jss/libjss4.so" );
++                System.load( "/usr/lib/mps/64/libjss4.so" );
+                 Debug.trace(Debug.VERBOSE, "64-bit jss library loaded");
+                 mNativeLibrariesLoaded = true;
+             } catch( UnsatisfiedLinkError e ) {
+                 try { // 32 bit rhel/fedora
+-                    System.load( "/usr/lib/jss/libjss4.so" );
++                    System.load( "/usr/lib/mps/libjss4.so" );
+                     Debug.trace(Debug.VERBOSE, "32-bit jss library loaded");
+                     mNativeLibrariesLoaded = true;
+                 } catch( UnsatisfiedLinkError f ) {

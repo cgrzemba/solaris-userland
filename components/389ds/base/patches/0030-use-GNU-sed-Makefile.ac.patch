@@ -1,0 +1,45 @@
+diff --git a/components/389ds/base/389-ds-base-1.3.5.17/Makefile.am b/components/389ds/base/389-ds-base-1.3.5.17/Makefile.am
+index d54a2cc..b2b1c3b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1780,7 +1780,7 @@ if BUNDLE
+ # on the systems on which we bundle, perldap will be in libdir/perl, so we need to point
+ # the perlpath there - on other systems, perldap will be installed as a site module into
+ # the system perl
+-fixupcmd = sed \
++fixupcmd = $(SED) \
+ 	-e 's,@bindir\@,$(bindir),g' \
+ 	-e 's,@sbindir\@,$(sbindir),g' \
+ 	-e 's,@libdir\@,$(libdir),g' \
+@@ -1851,7 +1851,7 @@ fixupcmd = sed \
+ 	-e 's,@systemdgroupname\@,$(systemdgroupname),g' \
+ 	-e 's,@prefixdir\@,$(prefixdir),g'
+ else
+-fixupcmd = sed \
++fixupcmd = $(SED) \
+ 	-e 's,@bindir\@,$(bindir),g' \
+ 	-e 's,@sbindir\@,$(sbindir),g' \
+ 	-e 's,@libdir\@,$(libdir),g' \
+@@ -1934,18 +1934,18 @@ endif
+ %/$(PACKAGE_NAME): %/base-initconfig.in
+ 	if [ ! -d $(dir $@) ] ; then mkdir -p $(dir $@) ; fi
+ if SYSTEMD
+-	$(fixupcmd) $^ | sed -e 's/@preamble@/# This file is in systemd EnvironmentFile format - see man systemd.exec/' > $@
++	$(fixupcmd) $^ | $(SED) -e 's/@preamble@/# This file is in systemd EnvironmentFile format - see man systemd.exec/' > $@
+ else
+-	$(fixupcmd) $^ | sed -n -e 's/@preamble@//' -e '/^#/{p;d}' -e '/^$$/{p;d}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
++	$(fixupcmd) $^ | $(SED) -n -e 's/@preamble@//' -e '/^#/{p;d}' -e '/^$$/{p;d}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
+ 	$(fixupcmd) $(srcdir)/ldap/admin/src/initconfig.in >> $@
+ endif
+ 
+ %/template-initconfig: %/template-initconfig.in
+ 	if [ ! -d $(dir $@) ] ; then mkdir -p $(dir $@) ; fi
+ if SYSTEMD
+-	$(fixupcmd) $^ | sed -e 's/@preamble@/# This file is in systemd EnvironmentFile format - see man systemd.exec/' > $@
++	$(fixupcmd) $^ | $(SED) -e 's/@preamble@/# This file is in systemd EnvironmentFile format - see man systemd.exec/' > $@
+ else
+-	$(fixupcmd) $^ | sed -n -e 's/@preamble@//' -e '/^#/{p;d}' -e '/^$$/{p;d}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
++	$(fixupcmd) $^ | $(SED) -n -e 's/@preamble@//' -e '/^#/{p;d}' -e '/^$$/{p;d}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
+ endif
+ 
+ %/$(PACKAGE_NAME).pc: %/dirsrv.pc.in

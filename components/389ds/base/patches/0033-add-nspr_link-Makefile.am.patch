@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index fbd57b7..e47160f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1540,7 +1540,7 @@ libschemareload_plugin_la_LDFLAGS = -avoid-version
+ libstatechange_plugin_la_SOURCES = ldap/servers/plugins/statechange/statechange.c
+ 
+ libstatechange_plugin_la_CPPFLAGS = $(PLUGIN_CPPFLAGS)
+-libstatechange_plugin_la_LIBADD = libslapd.la
++libstatechange_plugin_la_LIBADD = libslapd.la $(NSPR_LINK) 
+ libstatechange_plugin_la_LDFLAGS = -avoid-version
+ 
+ #------------------------

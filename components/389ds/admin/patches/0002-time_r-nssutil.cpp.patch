@@ -1,0 +1,11 @@
+--- a/include/base/systems.h~	Tue Nov  1 15:19:30 2016
++++ a/include/base/systems.h	Tue Aug 29 16:14:01 2017
+@@ -311,7 +311,7 @@
+ #define HAVE_ATEXIT
+ #define HAVE_PW_R
+ #define HAVE_STRTOK_R
+-#define HAVE_TIME_R 3 /* arg count */
++#define HAVE_TIME_R 2 /* arg count */
+ #define NEED_CRYPT_H
+ #define NEED_FILIO
+ #define NEED_GHN_PROTO

@@ -1,0 +1,22 @@
+diff --git a/configure.ac b/configure.ac
+index b5acc11..11fded7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -151,7 +151,7 @@ AC_ARG_WITH(nspr-lib, [  --with-nspr-lib=PATH        Netscape Portable Runtime (
+   if test -d "$withval"
+   then
+     AC_MSG_RESULT([using $withval])
+-    nspr_lib="-L$withval"
++    nspr_lib="-L$withval -R$withval"
+   else
+     echo
+     AC_MSG_ERROR([$withval not found])
+@@ -216,7 +216,7 @@ AC_ARG_WITH(nss-lib, [  --with-nss-lib=PATH         Network Security Services (N
+   if test -d "$withval"
+   then
+     AC_MSG_RESULT([using $withval])
+-    nss_lib="-L$withval"
++    nss_lib="-L$withval -R$withval"
+   else
+     echo
+     AC_MSG_ERROR([$withval not found])

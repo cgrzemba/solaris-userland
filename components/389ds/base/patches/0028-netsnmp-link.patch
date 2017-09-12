@@ -1,0 +1,13 @@
+diff --git a/m4/netsnmp.m4 b/m4/netsnmp.m4
+index 74fd058..fa7dad2 100644
+--- a/m4/netsnmp.m4
++++ b/m4/netsnmp.m4
+@@ -87,7 +87,7 @@ if test -n "$netsnmp_inc"; then
+   fi
+ 
+   if test -n "$NETSNMP_CONFIG"; then
+-    netsnmp_link=`$NETSNMP_CONFIG --agent-libs`
++    netsnmp_link=`$NETSNMP_CONFIG --agent-libs`" -ldladm"
+   else
+     AC_MSG_ERROR([net-snmp-config not found, specify with --with-netsnmp.])
+   fi

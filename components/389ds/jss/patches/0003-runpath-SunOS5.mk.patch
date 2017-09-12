@@ -1,0 +1,55 @@
+diff --git a/coreconf/SunOS5.mk b/coreconf/SunOS5.mk
+index ce9e2cb..e323a86 100644
+--- a/coreconf/SunOS5.mk
++++ b/coreconf/SunOS5.mk
+@@ -11,23 +11,7 @@ include $(CORE_DEPTH)/coreconf/UNIX.mk
+ # gcc's -m64 is equivalent to Workshop's v9
+ 
+ ifeq ($(USE_64), 1)
+-  ifdef NS_USE_GCC
+       ARCHFLAG=-m64
+-  else
+-      ifeq ($(OS_TEST),i86pc)
+-        ARCHFLAG=-xarch=amd64
+-      else
+-        ARCHFLAG=-xarch=v9
+-      endif
+-  endif
+-else
+-  ifneq ($(OS_TEST),i86pc)
+-    ifdef NS_USE_GCC
+-      ARCHFLAG=-mcpu=v9
+-    else
+-      ARCHFLAG=-xarch=v8plus
+-    endif
+-  endif
+ endif
+ 
+ DEFAULT_COMPILER = cc
+@@ -109,15 +93,11 @@ endif
+ 	DSO_LDOPTS += -shared -h $(notdir $@)
+ else
+ ifeq ($(USE_64), 1)
+-	ifeq ($(OS_TEST),i86pc)
+-	    DSO_LDOPTS +=-xarch=amd64
+-	else
+-	    DSO_LDOPTS +=-xarch=v9
+-	endif
++	DSO_LDOPTS += -m64
+ endif
+ 	DSO_LDOPTS += -G -h $(notdir $@)
+ endif
+-DSO_LDOPTS += -z combreloc -z defs -z ignore
++DSO_LDOPTS += -xnorunpath -z combreloc -z defs -z ignore
+ 
+ # -KPIC generates position independent code for use in shared libraries.
+ # (Similarly for -fPIC in case of gcc.)
+@@ -138,7 +118,7 @@ else
+ RPATH = -R '$$ORIGIN:/usr/lib/mps/secv1:/usr/lib/mps'
+ endif
+ else
+-RPATH = -R '$$ORIGIN'
++RPATH = -R '/usr/lib/mps/64'
+ endif
+ 
+ OS_LIBS += -lthread -lnsl -lsocket -lposix4 -ldl -lc
