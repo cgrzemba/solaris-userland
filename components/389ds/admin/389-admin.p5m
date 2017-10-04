@@ -234,4 +234,8 @@ license LICENSE license=GPLv2
 depend type=require fmri=pkg:/application/389-ds/389-admin-console
 depend type=require fmri=pkg:/application/389-ds/389-ds-console
 depend type=require fmri=pkg:/service/389-ds/389-ds-base
-
+depend type=require fmri=pkg:/library/perl-5/perldap
+depend type=require fmri=pkg:/library/perl-5/netaddr-ip
+depend type=require fmri=pkg:/runtime/perl-512
+depend type=require fmri=pkg:/web/server/apache-24/module/mod_nss
+depend type=require fmri=pkg:/web/server/apache-24
