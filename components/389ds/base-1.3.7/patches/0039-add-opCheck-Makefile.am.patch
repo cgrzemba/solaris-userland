@@ -1,0 +1,12 @@
+diff --git a/Makefile.am b/Makefile.am
+index 2417645..6bb9b97 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1868,6 +1868,7 @@ ldclt_SOURCES = ldap/servers/slapd/tools/ldaptool-sasl.c \
+ 	ldap/servers/slapd/tools/ldclt/threadMain.c \
+ 	ldap/servers/slapd/tools/ldclt/utils.c \
+ 	ldap/servers/slapd/tools/ldclt/version.c \
++	ldap/servers/slapd/tools/ldclt/opCheck.c \
+ 	ldap/servers/slapd/tools/ldclt/workarounds.c
+ 
+ ldclt_CPPFLAGS = $(AM_CPPFLAGS) -I$(srcdir)/ldap/servers/slapd/tools $(DSPLUGIN_CPPFLAGS) $(SASL_INCLUDES)

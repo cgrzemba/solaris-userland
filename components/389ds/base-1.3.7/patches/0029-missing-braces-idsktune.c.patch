@@ -1,0 +1,19 @@
+diff --git a/ldap/systools/idsktune.c b/ldap/systools/idsktune.c
+index c7aefd5..0ed2272 100644
+--- a/ldap/systools/idsktune.c
++++ b/ldap/systools/idsktune.c
+@@ -1511,11 +1511,13 @@ sun_check_network_device(void)
+                 printf("DEBUG  : %s link_speed is %d\n", SUN_NETWORK_DEVICE, ls);
+             }
+         }
++}
+ #endif
+ 
+ #if defined(__sun) || defined(__hpux) || defined(IDDS_LINUX_SYSCTL)
+ 
+-        static void ndd_tests(void)
++static void
++ndd_tests(void)
+         {
+             if (flag_html)
+                 printf("<P>\n");

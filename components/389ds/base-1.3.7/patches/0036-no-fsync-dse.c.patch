@@ -1,0 +1,16 @@
+diff --git a/ldap/servers/slapd/dse.c b/ldap/servers/slapd/dse.c
+index 420248c..e8cb77f 100644
+--- a/ldap/servers/slapd/dse.c
++++ b/ldap/servers/slapd/dse.c
+@@ -984,9 +984,11 @@ dse_write_file_nolock(struct dse *pdse)
+                  * We have now written to the tmp location, and renamed it
+                  * we need to open and fsync the dir to make the rename stick.
+                  */
++#if !defined(SOLARIS)
+                 int fp_configdir = open(pdse->dse_configdir, O_PATH | O_DIRECTORY);
+                 fsync(fp_configdir);
+                 close(fp_configdir);
++#endif
+             }
+         }
+         if (fpw.fpw_prfd)
