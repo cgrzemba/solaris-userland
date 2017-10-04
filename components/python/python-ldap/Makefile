@@ -25,60 +25,30 @@
 include ../../../make-rules/shared-macros.mk
 
 COMPONENT_NAME=		python-ldap
-COMPONENT_VERSION=	2.4.25
+COMPONENT_VERSION=	2.4.44
 COMPONENT_SRC=		$(COMPONENT_NAME)-$(COMPONENT_VERSION)
 COMPONENT_ARCHIVE=	$(COMPONENT_SRC).tar.gz
 COMPONENT_ARCHIVE_HASH=	\
-    sha256:62d00dbc86f3f9b21beacd9b826e8f9895f900637a60a6d4e7ab59a1cdc64e56
+    sha256:70ec4eb6c71c3b4f07a5c4e2ae76bb322d11019efcb04c306d87e857ea4e1841
 COMPONENT_ARCHIVE_URL=	$(call pypi_url)
 COMPONENT_PROJECT_URL=	http://www.python-ldap.org/
 COMPONENT_BUGDB=	python-mod/python-ldap
 COMPONENT_ANITYA_ID=	13261
 
 TPNO=			29571
+ASLR_MODE= $(ASLR_NOT_APPLICABLE)
 
-# This module has syntax issues and thus is not Python 3 ready.
-PYTHON_VERSIONS=	$(PYTHON2_VERSIONS)
+PYTHON_VERSIONS := 2.7
+BUILD_BITS = 32_and_64
 
-include $(WS_MAKE_RULES)/prep.mk
-include $(WS_MAKE_RULES)/setup.py.mk
-include $(WS_MAKE_RULES)/ips.mk
+BUILD_STYLE = setup.py
+include $(WS_MAKE_RULES)/common.mk
 
-ASLR_MODE = $(ASLR_NOT_APPLICABLE)
-
-COMPONENT_TEST_DIR =    $(SOURCE_DIR)/Tests
-COMPONENT_TEST_CMD =	$(SHELL)
-COMPONENT_TEST_ARGS =   runtests.sh
-COMPONENT_TEST_ENV +=	PYTHONPATH=$(PROTO_DIR)$(PYTHON_VENDOR_PACKAGES.32)
-# Needed to create a unique temporary directory.
-COMPONENT_TEST_ENV +=	BUILD_DIR=$(BUILD_DIR)
-
-# common targets
-build:		$(BUILD_32_and_64)
-
-install:	$(INSTALL_32_and_64)
-
-# Two tests are known to fail. These failures are not critical.
-#
-# One fails because it says the library does not throw a value error on a
-# bad URL. This one fails, as the bad url it is trying is an edge case:
-# ldap:///?????  and not that important.  The OpenLDAP library doesn't 
-# have the necessary code to check for that case and error out.  We (or
-# someone from the python-ldap team) would have to log an OpenLDAP bug,
-# propose a fix to the code, see it integrated, wait for a release, and
-# integrate the new release into Userland.
-#
-# The other failure is for a test case that has a comment before the test case:
-# # these two constants are pointless? XXX
-# The answer being yes.  And the constants are not defined in the latest
-# version of python-ldap.
-# 
-test:		$(TEST_32_and_64)
-
-system-test:    $(SYSTEM_TESTS_NOT_IMPLEMENTED)
-
-$(SOLARIS_11_3_ONLY)REQUIRED_PACKAGES += library/openldap
-REQUIRED_PACKAGES += library/python/pyasn1-27
-REQUIRED_PACKAGES += library/python/pyasn1-modules-27
+REQUIRED_PACKAGES += library/openldap
+REQUIRED_PACKAGES += library/python/pyasn1
+REQUIRED_PACKAGES += library/python/pyasn1-modules
 REQUIRED_PACKAGES += system/library
-REQUIRED_PACKAGES += system/network/ldap/openldap
+# REQUIRED_PACKAGES += system/network/ldap/openldap
+
+show:
+	@echo "var: $(PYTHON_VERSIONS)"
