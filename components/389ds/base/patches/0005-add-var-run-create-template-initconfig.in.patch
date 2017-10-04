@@ -7,9 +7,9 @@
 +[ ! -d $RUN_DIR ] && mkdir -p $RUN_DIR
 +if [ -f $CONFIG_DIR/dse.ldif ]; then
 +  slapduser=`grep nsslapd-localuser: $CONFIG_DIR/dse.ldif | cut -d: -f2 | tr -d ' '`
-+  slapdgroup=`getent passwd ldap | cut -d: -f4`
++  slapdgroup=`getent passwd $slapduser | cut -d: -f4`
 +  chown $slapduser:$slapdgroup $RUN_DIR
 +fi
 +chmod g+w $RUN_DIR
-+chmod +rx `dirname $RUNDIR`
++chmod +rx `dirname $RUN_DIR`
 +
