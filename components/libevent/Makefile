@@ -53,6 +53,9 @@ COMPONENT_POST_CONFIGURE_ACTION += \
 	's|libevent_la_LDFLAGS = |libevent_la_LDFLAGS = -Wl,-M,../../mapfile |' \
 	$(SOURCE_DIR)/Makefile.in ;
 
+COMPONENT_POST_BUILD_ACTION += \
+	( cp $(@D)/$(EVENTH) $(COMPONENT_SRC)/$(dir $(EVENTH)) )
+
 # The original manpage is in a format that the Solaris man command does not
 # understand. Hence it has been manually converted.
 #
