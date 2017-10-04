@@ -25,11 +25,11 @@
 include ../../../make-rules/shared-macros.mk
 
 COMPONENT_NAME=		pyasn1
-COMPONENT_VERSION=	0.1.9
+COMPONENT_VERSION=	0.3.4
 COMPONENT_SRC=		$(COMPONENT_NAME)-$(COMPONENT_VERSION)
 COMPONENT_ARCHIVE=	$(COMPONENT_SRC).tar.gz
 COMPONENT_ARCHIVE_HASH=	\
-    sha256:853cacd96d1f701ddd67aa03ecc05f51890135b7262e922710112f12a2ed2a7f
+    sha256:3946ff0ab406652240697013a89d76e388344866033864ef2b097228d1f0101a
 COMPONENT_ARCHIVE_URL=	$(call pypi_url)
 COMPONENT_PROJECT_URL=	http://pyasn1.sourceforge.net/
 COMPONENT_BUGDB=	python-mod/pyasn1
@@ -37,27 +37,9 @@ COMPONENT_ANITYA_ID=	6996
 
 TPNO=			26348
 
-include $(WS_MAKE_RULES)/prep.mk
-include $(WS_MAKE_RULES)/setup.py.mk
-include $(WS_MAKE_RULES)/ips.mk
+BUILD_BITS = NO_ARCH
+BUILD_STYLE = setup.py
+PYTHON_VERSIONS = 2.7 3.4
 
-COMPONENT_TEST_DIR =    $(SOURCE_DIR)
-COMPONENT_TEST_ARGS =   setup.py test
-COMPONENT_TEST_MASTER = $(COMPONENT_TEST_RESULTS_DIR)/results-all.master
-
-# The test output contains arbitrary output. Use nawk to extract just the
-# sections that summarizes the test result.
-COMPONENT_TEST_TRANSFORMER = $(NAWK)
-COMPONENT_TEST_TRANSFORMS = "'/^Ran .+ / { sub(\" tests in .+s\", \" tests in\"); print }; /!NF/ { print }; /^OK/ { print };'"
-
-ASLR_MODE = $(ASLR_NOT_APPLICABLE)
-
-# common targets
-build:		$(BUILD_NO_ARCH)
-
-install:	$(INSTALL_NO_ARCH)
-
-test:		$(TEST_NO_ARCH)
-
-system-test:    $(SYSTEM_TESTS_NOT_IMPLEMENTED)
+include $(WS_MAKE_RULES)/common.mk
 

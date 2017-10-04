@@ -38,6 +38,7 @@ COMPONENT_ANITYA_ID=	3938
 
 TPNO=			31169
 
+PYTHON_VERSIONS = 3.4
 include $(WS_MAKE_RULES)/prep.mk
 include $(WS_MAKE_RULES)/setup.py.mk
 include $(WS_MAKE_RULES)/ips.mk

@@ -38,17 +38,12 @@ COMPONENT_ANITYA_ID=	5621
 
 TPNO=			28610
 
-include $(WS_MAKE_RULES)/prep.mk
-include $(WS_MAKE_RULES)/setup.py.mk
-include $(WS_MAKE_RULES)/ips.mk
+PYTHON_VERSIONS = 2.7 3.4
+BUILD_BITS = NO_ARCH
+BUILD_STYLE=setup.py
+include $(WS_MAKE_RULES)/common.mk
 
 ASLR_MODE = $(ASLR_NOT_APPLICABLE)
-
-# common targets
-build:		$(BUILD_NO_ARCH)
-
-install:	$(INSTALL_NO_ARCH)
-
 # Run the tests in the build directory so as not to touch the source directory.
 # Because they're not copied over during the build, we do that now.
 COMPONENT_PRE_TEST_ACTION = \
@@ -57,7 +52,3 @@ COMPONENT_TEST_DIR = $(@D)
 COMPONENT_TEST_CMD = py.test-$(PYTHON_VERSION)
 COMPONENT_TEST_ARGS = --result-log=$(COMPONENT_TEST_OUTPUT)
 COMPONENT_TEST_MASTER = $(COMPONENT_TEST_RESULTS_DIR)/results-all.master
-
-test:		$(TEST_NO_ARCH)
-
-system-test:    $(NO_TESTS)
