@@ -1,0 +1,12 @@
+diff --git a/src/libsds/include/sds.h b/src/libsds/include/sds.h
+index c649c03..0292ff0 100644
+--- a/src/libsds/include/sds.h
++++ b/src/libsds/include/sds.h
+@@ -9,6 +9,7 @@
+ 
+ #pragma once
+ 
++#include <pthread.h>
+ /**
+  * \defgroup sds_misc SDS Miscelaneous
+  * Miscelaneous functions for SDS. This may be replaced by a PAL from ns-slapd soon.

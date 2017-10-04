@@ -1,0 +1,31 @@
+diff --git a/Makefile.am b/Makefile.am
+index 4863d41..2417645 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2073,7 +2073,7 @@ endif
+ # LD_LIBRARY_PATH = ${prefix}/lib/dirsrv
+ # i.e. it literally copies in '${prefix}' rather than expanding it out - we want this instead:
+ # LD_LIBRARY_PATH = /usr/lib/dirsrv
+-fixupcmd = sed \
++fixupcmd = $(SED) \
+ 	-e 's,@bindir\@,$(bindir),g' \
+ 	-e 's,@sbindir\@,$(sbindir),g' \
+ 	-e 's,@libdir\@,$(libdir),g' \
+@@ -2160,7 +2160,7 @@ fixupcmd = sed \
+ if SYSTEMD
+ 	$(fixupcmd) $^ | sed -e 's/@preamble@/# This file is in systemd EnvironmentFile format - see man systemd.exec/' > $@
+ else
+-	$(fixupcmd) $^ | sed -n -e 's/@preamble@//' -e '/^#/{p;d;}' -e '/^$$/{p;d;}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
++	$(fixupcmd) $^ | $(SED) -n -e 's/@preamble@//' -e '/^#/{p;d;}' -e '/^$$/{p;d;}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
+ 	$(fixupcmd) $(srcdir)/ldap/admin/src/initconfig.in >> $@
+ endif
+ 
+@@ -2169,7 +2169,7 @@ endif
+ if SYSTEMD
+ 	$(fixupcmd) $^ | sed -e 's/@preamble@/# This file is in systemd EnvironmentFile format - see man systemd.exec/' > $@
+ else
+-	$(fixupcmd) $^ | sed -n -e 's/@preamble@//' -e '/^#/{p;d;}' -e '/^$$/{p;d;}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
++	$(fixupcmd) $^ | $(SED) -n -e 's/@preamble@//' -e '/^#/{p;d;}' -e '/^$$/{p;d;}' -e 's/^\([^=]*\)\(=.*\)$$/\1\2 ; export \1/ ; p' > $@
+ endif
+ 
+ %/$(PACKAGE_NAME)-snmp: %/ldap-agent-initscript.in

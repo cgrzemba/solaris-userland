@@ -1,0 +1,36 @@
+diff --git a/ldap/servers/slapd/log.c b/ldap/servers/slapd/log.c
+index 41b5c99..7d991b9 100644
+--- a/ldap/servers/slapd/log.c
++++ b/ldap/servers/slapd/log.c
+@@ -24,7 +24,30 @@
+ */
+ 
+ /* Use the syslog level names (prioritynames) */
+-#define SYSLOG_NAMES 1
++#if !defined(SYSLOG_NAMES)
++#include <syslog.h>
++
++typedef struct _code {
++        char    *c_name;
++        int     c_val;
++} CODE;
++
++CODE prioritynames[] =
++  {
++    { "alert", LOG_ALERT },
++    { "crit", LOG_CRIT },
++    { "debug", LOG_DEBUG },
++    { "emerg", LOG_EMERG },
++    { "err", LOG_ERR },
++    { "error", LOG_ERR },               /* DEPRECATED */
++    { "info", LOG_INFO },
++    { "notice", LOG_NOTICE },
++    { "panic", LOG_EMERG },             /* DEPRECATED */
++    { "warn", LOG_WARNING },            /* DEPRECATED */
++    { "warning", LOG_WARNING },
++    { '\0' , -1 }
++  };
++#endif
+ 
+ #include "log.h"
+ #include "fe.h"

@@ -26,10 +26,10 @@
 PATH=$(SPRO_VROOT)/bin:$(GNUBIN):$(USRBINDIR)
 
 COMPONENT_NAME=		389-ds-base
-COMPONENT_VERSION=	1.3.5.17
+COMPONENT_VERSION=	1.3.7.4
 COMPONENT_PROJECT_URL=	http://directory.fedoraproject.org
 COMPONENT_ARCHIVE_HASH= \
-    sha256:522420b6decc162ed5d57ca913753b48e4bd7137fa0eb1bbc3e21e45923b1819
+    sha256:bc5021b37c240a848f9567b31dc91ee7e8dea564360cceedf42a962a910aee5e
 COMPONENT_ARCHIVE = $(COMPONENT_NAME)-$(COMPONENT_VERSION).tar.bz2
 COMPONENT_ARCHIVE_URL=	http://directory.fedoraproject.org/binaries/$(COMPONENT_ARCHIVE)
 COMPONENT_BUGDB=	
@@ -42,26 +42,19 @@ include ../../../make-rules/shared-macros.mk
 
 include $(WS_MAKE_RULES)/common.mk
 
-# studio_C99MODE= $(studio_C99_ENABLE)
-# CPPFLAGS += "-DFALSE_SHARING_ALIGN=64"
-
 # uses  __atomic_add_fetch_8
 COMPILER = gcc
 
+# FLAVOR = DBG
+FLAVOR = TST
+
 CONFIGURE_ENV +=	PYTHONPROG=$(PYTHON.$(BITS))
 
-# CONFIGURE_OPTIONS += --with-ldapsdk-inc=$(USRINCDIR)/dirsrv 
-# CONFIGURE_OPTIONS += --with-ldapsdk-lib=$(libdir)
-# CONFIGURE_OPTIONS += --with-ldapsdk-bin=$(prefix)/dirsrv/bin
-# CONFIGURE_OPTIONS += --with-ldapsdk-bin=$(bindir)
-# CONFIGURE_OPTIONS += --with-openldap=$(prefix)
 CONFIGURE_OPTIONS += --sysconfdir=/etc
 CONFIGURE_OPTIONS += --localstatedir=/var
 CONFIGURE_OPTIONS += --with-openldap-inc=$(USRINCDIR)/openldap
 CONFIGURE_OPTIONS += --with-openldap-lib=$(USRLIBDIR)/$(MACH64)
 CONFIGURE_OPTIONS += --with-openldap-bin=$(USRLIBDIR)/openldap/bin
-# CONFIGURE_OPTIONS += --with-db-inc=$(prefix)/bdb48/include 
-# CONFIGURE_OPTIONS += --with-db-lib=$(abspath $(prefix)/bdb48/lib/$(MM_LIBDIR))
 CONFIGURE_OPTIONS += --with-sasl-inc=$(USRINCDIR)/sasl2 
 CONFIGURE_OPTIONS += --with-sasl-lib=$(USRLIBDIR)/sasl2/$(MACH64)
 CONFIGURE_OPTIONS += --with-nss-lib=$(USRLIBDIR)/mps/$(MACH64)
@@ -70,7 +63,9 @@ CONFIGURE_OPTIONS += --with-nspr-lib=$(USRLIBDIR)/mps/$(MACH64)
 CONFIGURE_OPTIONS += --with-nspr-inc=$(USRINCDIR)/mps
 # to satisfy pkgsend resolve
 CONFIGURE_OPTIONS += --with-pythonexec=/usr/bin/python2.7
-CONFIGURE_OPTIONS += --enable-debug
+CONFIGURE_OPTIONS.DBG += --enable-debug
+CONFIGURE_OPTIONS.TST += --enable-cmocka
+CONFIGURE_OPTIONS += $(CONFIGURE_OPTIONS.$(FLAVOR))
 
 COMPONENT_PRE_CONFIGURE_ACTION = \
 	($(CLONEY) $(SOURCE_DIR) $(@D))
@@ -100,3 +95,6 @@ REQUIRED_PACKAGES += library/openldap
 REQUIRED_PACKAGES += database/berkeleydb-5
 REQUIRED_PACKAGES += service/security/kerberos-5
 REQUIRED_PACKAGES += library/pcre
+REQUIRED_PACKAGES += library/libevent
+REQUIRED_PACKAGES += developer/documentation-tool/doxygen
+REQUIRED_PACKAGES += developer/build/pkg-config

@@ -1,0 +1,82 @@
+diff --git a/ldap/servers/slapd/slapi_pal.c b/ldap/servers/slapd/slapi_pal.c
+index 38c178c..da1c5df 100644
+--- a/ldap/servers/slapd/slapi_pal.c
++++ b/ldap/servers/slapd/slapi_pal.c
+@@ -30,6 +30,7 @@
+ #ifdef OS_solaris
+ #include <sys/procfs.h>
+ #include <fcntl.h>
++#include <kstat.h>
+ #endif
+ 
+ #if defined(hpux)
+@@ -52,7 +54,7 @@ _spal_rlimit_get(int resource, uint64_t *soft_limit, uint64_t *hard_limit)
+     if (rl.rlim_max != RLIM_INFINITY) {
+         *hard_limit = (uint64_t)rl.rlim_max;
+     }
+-
++    slapi_log_err(SLAPI_LOG_TRACE, "_spal_rlimit_get", "softlimit = %d\n", *soft_limit);
+     return 0;
+ }
+ 
+@@ -270,6 +272,7 @@ _spal_solaris_resident_pages_get()
+         }
+         close(fd);
+     }
++    slapi_log_err(SLAPI_LOG_TRACE, "_spal_solaris_resident_pages_get", "procpages = %"PRIu64"\n", procpages);
+     return procpages;
+ }
+ 
+@@ -284,7 +287,29 @@ spal_meminfo_get()
+     if (_spal_rlimit_get(RLIMIT_AS, &rl_mem_soft, &rl_mem_hard)) {
+         slapi_log_err(SLAPI_LOG_ERR, "spal_meminfo_get", "Unable to retrieve memory rlimit\n");
+     }
+-
++    if( rl_mem_soft == 0 ) {
++        static kstat_ctl_t *kc = NULL;
++        
++        if ((kc = kstat_open()) == NULL){
++            slapi_log_err(SLAPI_LOG_ERR, "spal_meminfo_get", "Unable to open kstat\n");
++        }else{
++            // Get system page size
++            int pagesize = sysconf(_SC_PAGESIZE);
++            // Lookup system_pages kstat node
++            kstat_t *ks = kstat_lookup(kc, "unix", 0, "system_pages");
++            kstat_read(kc, ks, 0);
++            // Get free memory
++            kstat_named_t *kn = kstat_data_lookup(ks, "freemem");
++            int freemem = kn->value.ui32; 
++            rl_mem_soft = (pagesize*freemem);
++            // Get physical memory
++            kn = kstat_data_lookup(ks, "physmem");
++            int physmem = kn->value.ui32;
++            rl_mem_hard = (pagesize*physmem);
++            slapi_log_err(SLAPI_LOG_TRACE, "spal_meminfo_get", "memavail = %d\n", rl_mem_soft);
++        }
++    }
++    
+     mi->pagesize_bytes = sysconf(_SC_PAGESIZE);
+     mi->system_total_pages = sysconf(_SC_PHYS_PAGES);
+     mi->system_total_bytes = mi->system_total_pages * mi->pagesize_bytes;
+@@ -294,6 +319,8 @@ spal_meminfo_get()
+     }
+     mi->process_consumed_pages = _spal_solaris_resident_pages_get();
+     mi->process_consumed_bytes = mi->process_consumed_pages * mi->pagesize_bytes;
++    slapi_log_err(SLAPI_LOG_TRACE, "spal_meminfo_get", "{pagesize_bytes = %" PRIu64 ", system_total_pages = %" PRIu64 ", system_total_bytes = %" PRIu64 ", process_consumed_pages = %" PRIu64 ", process_consumed_bytes = %" PRIu64 ", system_available_pages = %" PRIu64 ", system_available_bytes = %" PRIu64 "},\n",
++                  mi->pagesize_bytes, mi->system_total_pages, mi->system_total_bytes, mi->process_consumed_pages, mi->process_consumed_bytes, mi->system_available_pages, mi->system_available_bytes);
+ 
+     return mi;
+ }
+diff --git a/Makefile.am b/Makefile.am
+index b1acdc1..416a37f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -164,7 +164,7 @@ endif #end hpux
+ 
+ SDS_LDFLAGS = $(NSPR_LINK) -version-info 0:0:0
+ NUNCSTANS_LDFLAGS = $(NSPR_LINK) $(EVENT_LINK) -version-info 1:0:1
+-SLAPD_LDFLAGS = -version-info 1:0:1
++SLAPD_LDFLAGS = -lkstat -version-info 1:0:1
+ 
+ 
+ #------------------------

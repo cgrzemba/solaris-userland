@@ -1,0 +1,33 @@
+diff --git a/ldap/servers/plugins/roles/roles_cache.c b/ldap/servers/plugins/roles/roles_cache.c
+index 59f5a60..48fda9d 100644
+--- a/ldap/servers/plugins/roles/roles_cache.c
++++ b/ldap/servers/plugins/roles/roles_cache.c
+@@ -32,11 +32,7 @@
+ #include "roles_cache.h"
+ #include "views.h"
+ 
+-#ifdef SOLARIS
+-#include <tnf/probe.h>
+-#else
+ #define TNF_PROBE_0(a, b, c)
+-#endif
+ 
+ #define MAX_NESTED_ROLES 30
+ 
+diff --git a/ldap/servers/plugins/acl/acl.h b/ldap/servers/plugins/acl/acl.h
+index c1c5752..b6b1156 100644
+--- a/ldap/servers/plugins/acl/acl.h
++++ b/ldap/servers/plugins/acl/acl.h
+@@ -41,12 +41,8 @@
+ #include "cert.h"
+ #include <plhash.h>
+ 
+-#ifdef SOLARIS
+-#include <tnf/probe.h>
+-#else
+ #define TNF_PROBE_0_DEBUG(a, b, c)
+ #define TNF_PROBE_1_DEBUG(a, b, c, d, e, f)
+-#endif
+ 
+ #define ACL_PLUGIN_NAME "NSACLPlugin"
+ extern char *plugin_name;

@@ -1,0 +1,37 @@
+diff --git a/configure.ac b/configure.ac
+index 846e3b4..d06cc38 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -594,7 +594,11 @@ case $host in
+     AC_DEFINE([sunos5], [1], [SunOS5])
+     AC_DEFINE([OSVERSION], [509], [OS version])
+     AC_DEFINE([_REENTRANT], [1], [_REENTRANT])
+-    AC_DEFINE([NO_DOMAINNAME], [1], [no getdomainname])
++    AC_DEFINE([ATOMIC_64BIT_OPERATIONS], [1], [enabling atomic counter])
++    AC_DEFINE([HAVE_64BIT_ATOMIC_CAS_FUNC], [1], [have 64-bit atomic bool compare and swap function provided by gcc])
++    AC_DEFINE([HAVE_64BIT_ATOMIC_OP_FUNCS], [1], [have 64-bit atomic operation functions provided by gcc])
++    AC_DEFINE([USE_POSIX_RWLOCKS], [1], [POSIX rwlocks])
++
+ dnl socket nsl and dl are required to link several programs and libdb
+     LIBSOCKET=-lsocket
+     AC_SUBST([LIBSOCKET], [$LIBSOCKET])
+@@ -603,9 +607,9 @@ dnl socket nsl and dl are required to link several programs and libdb
+     LIBDL=-ldl
+     AC_SUBST([LIBDL], [$LIBDL])
+ dnl Cstd and Crun are required to link any C++ related code
+-    LIBCSTD=-lCstd
++    LIBCSTD=
+     AC_SUBST([LIBCSTD], [$LIBCSTD])
+-    LIBCRUN=-lCrun
++    LIBCRUN=
+     AC_SUBST([LIBCRUN], [$LIBCRUN])
+     platform="solaris"
+     initdir='$(sysconfdir)/init.d'
+@@ -661,7 +661,6 @@ dnl Cstd and Crun are required to link any C++ related code
+       sparc-*-solaris*)
+         dnl includes some assembler stuff in counter.o
+         AC_DEFINE([CPU_sparc], [], [cpu type sparc])
+-        TARGET='SPARC'
+         ;;
+     esac
+     ;;

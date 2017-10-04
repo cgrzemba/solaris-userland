@@ -1,0 +1,13 @@
+diff --git a/ldap/servers/slapd/util.c b/ldap/servers/slapd/util.c
+index a0f3268..a542e0e 100644
+--- a/ldap/servers/slapd/util.c
++++ b/ldap/servers/slapd/util.c
+@@ -1491,7 +1491,7 @@ util_is_cachesize_sane(slapi_pal_meminfo *mi, uint64_t *cachesize)
+ long
+ util_get_hardware_threads(void)
+ {
+-#ifdef LINUX
++#if defined(LINUX) || defined(SOLARIS)
+     long hw_threads = sysconf(_SC_NPROCESSORS_ONLN);
+     long threads = 0;
+     slapi_log_err(SLAPI_LOG_TRACE, "util_get_hardware_threads", "Detected %lu hardware threads\n", threads);
