@@ -37,9 +37,9 @@ COMPONENT_ANITYA_ID=	6996
 
 TPNO=			42937
 
-include $(WS_MAKE_RULES)/prep.mk
-include $(WS_MAKE_RULES)/setup.py.mk
-include $(WS_MAKE_RULES)/ips.mk
+BUILD_BITS = NO_ARCH
+BUILD_STYLE = setup.py
+PYTHON_VERSIONS = 2.7 3.4
 
 COMPONENT_TEST_DIR =	$(SOURCE_DIR)
 COMPONENT_TEST_CMD =	$(PYTHON) -m pytest
