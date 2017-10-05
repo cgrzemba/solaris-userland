@@ -45,11 +45,11 @@ index 38c178c..da1c5df 100644
 +            kstat_read(kc, ks, 0);
 +            // Get free memory
 +            kstat_named_t *kn = kstat_data_lookup(ks, "freemem");
-+            int freemem = kn->value.ui32; 
++            int freemem = kn->value.ui64; 
 +            rl_mem_soft = (pagesize*freemem);
 +            // Get physical memory
 +            kn = kstat_data_lookup(ks, "physmem");
-+            int physmem = kn->value.ui32;
++            int physmem = kn->value.ui64;
 +            rl_mem_hard = (pagesize*physmem);
 +            slapi_log_err(SLAPI_LOG_TRACE, "spal_meminfo_get", "memavail = %d\n", rl_mem_soft);
 +        }
