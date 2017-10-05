@@ -1,0 +1,1 @@
+/home/grzemba/solaris-userland/components/net-snmp-57/net-snmp-5.7.2.1/agent/mibgroup/ip-mib/inetNetToMediaTable/inetNetToMediaTable_data_access.c
