@@ -36,9 +36,9 @@ set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
 set name=org.opensolaris.arc-caseid value=PSARC/2017/yyy
 set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
 dir  path=usr/perl5/$(PERLVER)
-dir  path=usr/perl5/$(PERLVER)/lib
-dir  path=usr/perl5/$(PERLVER)/lib/$(PERL_ARCH)
-file path=usr/perl5/$(PERLVER)/lib/$(PERL_ARCH)/perllocal.pod
+# dir  path=usr/perl5/$(PERLVER)/lib
+# dir  path=usr/perl5/$(PERLVER)/lib/$(PERL_ARCH)
+# file path=usr/perl5/$(PERLVER)/lib/$(PERL_ARCH)/perllocal.pod
 dir  path=usr/perl5/$(PERLVER)/man
 dir  path=usr/perl5/$(PERLVER)/man/man3
 file path=usr/perl5/$(PERLVER)/man/man3/NetAddr::IP.3
