@@ -32,26 +32,26 @@ index 38c178c..da1c5df 100644
          slapi_log_err(SLAPI_LOG_ERR, "spal_meminfo_get", "Unable to retrieve memory rlimit\n");
      }
 -
-+    if( rl_mem_soft == 0 ) {
++    if( rl_mem_soft == 0 ) { /* no resource limit set */
 +        static kstat_ctl_t *kc = NULL;
 +        
 +        if ((kc = kstat_open()) == NULL){
 +            slapi_log_err(SLAPI_LOG_ERR, "spal_meminfo_get", "Unable to open kstat\n");
 +        }else{
 +            // Get system page size
-+            int pagesize = sysconf(_SC_PAGESIZE);
++            uint64_t pagesize = sysconf(_SC_PAGESIZE);
 +            // Lookup system_pages kstat node
 +            kstat_t *ks = kstat_lookup(kc, "unix", 0, "system_pages");
 +            kstat_read(kc, ks, 0);
 +            // Get free memory
 +            kstat_named_t *kn = kstat_data_lookup(ks, "freemem");
-+            int freemem = kn->value.ui64; 
++            uint64_t freemem = kn->value.ui64; 
 +            rl_mem_soft = (pagesize*freemem);
 +            // Get physical memory
 +            kn = kstat_data_lookup(ks, "physmem");
-+            int physmem = kn->value.ui64;
++            uint64_t physmem = kn->value.ui64;
 +            rl_mem_hard = (pagesize*physmem);
-+            slapi_log_err(SLAPI_LOG_TRACE, "spal_meminfo_get", "memavail = %d\n", rl_mem_soft);
++            slapi_log_err(SLAPI_LOG_TRACE, "spal_meminfo_get", "memavail = %"PRIu64"\n", rl_mem_soft);
 +        }
 +    }
 +    

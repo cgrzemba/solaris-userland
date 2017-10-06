@@ -37,6 +37,7 @@ COMPONENT_ANITYA_ID=
 
 TPNO=9999
 
+# csiphash is only 64bit aware!
 BUILD_BITS= 64
 include ../../../make-rules/shared-macros.mk
 
@@ -44,6 +45,8 @@ include $(WS_MAKE_RULES)/common.mk
 
 # uses  __atomic_add_fetch_8
 COMPILER = gcc
+
+CFLAGS.gcc.sparc += -mno-unaligned-doubles
 
 # FLAVOR = DBG
 FLAVOR = TST
@@ -81,6 +84,8 @@ COMPONENT_PREP_ACTION = ( \
 COMPONENT_POST_INSTALL_ACTION = \
 	( ginstall -d $(PROTOSVCMANIFESTDIR)/network ; \
 	 svcbundle -o $(PROTOSVCMANIFESTDIR)/network/dirsrv.xml -s service-name=network/ds/dirsrv -s start-method=/usr/bin/start-dirsrv -s stop-method=/usr/bin/stop-dirsrv -s model=daemon -s enabled=false )
+
+TEST_TARGET = $(TEST_64)
 
 REQUIRED_PACKAGES += library/security/openssl
 REQUIRED_PACKAGES += $(PERL_PKG)
