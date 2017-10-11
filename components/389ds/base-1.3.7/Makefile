@@ -26,12 +26,12 @@
 PATH=$(SPRO_VROOT)/bin:$(GNUBIN):$(USRBINDIR)
 
 COMPONENT_NAME=		389-ds-base
-COMPONENT_VERSION=	1.3.7.4
+COMPONENT_VERSION=	1.3.7.6
 COMPONENT_PROJECT_URL=	http://directory.fedoraproject.org
 COMPONENT_ARCHIVE_HASH= \
-    sha256:bc5021b37c240a848f9567b31dc91ee7e8dea564360cceedf42a962a910aee5e
+    sha256:7236e71489b832f9e13d2b2f8b5a93060dc0e0ff92fb35a0d39641bae020a769
 COMPONENT_ARCHIVE = $(COMPONENT_NAME)-$(COMPONENT_VERSION).tar.bz2
-COMPONENT_ARCHIVE_URL=	http://directory.fedoraproject.org/binaries/$(COMPONENT_ARCHIVE)
+COMPONENT_ARCHIVE_URL=	https://releases.pagure.org/$(COMPONENT_NAME)/$(COMPONENT_ARCHIVE)
 COMPONENT_BUGDB=	
 COMPONENT_ANITYA_ID=	
 
@@ -83,7 +83,8 @@ COMPONENT_PREP_ACTION = ( \
 
 COMPONENT_POST_INSTALL_ACTION = \
 	( ginstall -d $(PROTOSVCMANIFESTDIR)/network ; \
-	 svcbundle -o $(PROTOSVCMANIFESTDIR)/network/dirsrv.xml -s service-name=network/ds/dirsrv -s start-method=/usr/bin/start-dirsrv -s stop-method=/usr/bin/stop-dirsrv -s model=daemon -s enabled=false )
+	 svcbundle -o $(PROTOSVCMANIFESTDIR)/network/dirsrv.xml -s service-name=network/ds/dirsrv -s start-method=/usr/bin/start-dirsrv -s stop-method=/usr/bin/stop-dirsrv -s model=daemon -s enabled=false ;\
+	 )
 
 TEST_TARGET = $(TEST_64)
 
