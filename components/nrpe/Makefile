@@ -58,4 +58,5 @@ install: $(INSTALL_64)
 REQUIRED_PACKAGES += library/security/openssl
 REQUIRED_PACKAGES += system/network
 REQUIRED_PACKAGES += system/core-os
+REQUIRED_PACKAGES += system/library/libc
 
