@@ -1,0 +1,23 @@
+diff --git a/startup/solaris-init.xml.in b/startup/solaris-init.xml.in
+index e4ff84c..d81fef9 100644
+--- a/startup/solaris-init.xml.in
++++ b/startup/solaris-init.xml.in
+@@ -68,7 +68,7 @@
+ 			restart_on='restart'
+ 			type='path'>
+ 			<service_fmri
+-			    value='file://localhost@sysconfdir@/nrpe.cfg' />
++			    value='file://localhost@pkgsysconfdir@/nrpe.cfg' />
+ 		</dependency>
+ 
+ 		<dependency
+@@ -91,9 +91,6 @@
+ 			name='start'
+ 			exec='@sbindir@/nrpe -c @pkgsysconfdir@/nrpe.cfg -d'
+ 			timeout_seconds='5'>
+-			<method_context>
+-				<method_credential user='@nrpe_user@' group='@nrpe_group@'/>
+-			</method_context>
+ 		</exec_method>
+ 
+ 		<exec_method

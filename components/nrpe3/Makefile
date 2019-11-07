@@ -53,7 +53,7 @@ studio_C99MODE= $(studio_C99_ENABLE)
 CONFIGURE_OPTIONS += --enable-install-method=os
 # CONFIGURE_OPTIONS += --sysconfdir=/etc
 CONFIGURE_OPTIONS += --sbindir=/usr/sbin
-CONFIGURE_OPTIONS += --with-piddir=/var/run/nagios
+CONFIGURE_OPTIONS += --with-piddir=/var/run
 CONFIGURE_OPTIONS += --enable-command-args
 # CONFIGURE_OPTIONS += --enable-ssl
 # CONFIGURE_OPTIONS += --with-ssl=/usr/bin/openssl
