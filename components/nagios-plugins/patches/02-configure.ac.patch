@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 7127dd3..b3a6f34 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -315,7 +315,7 @@ AS_IF([test "x$with_ldap" != "xno"], [
+   AC_CHECK_LIB(ldap,main,,,-llber)
+   if test "$ac_cv_lib_ldap_main" = "yes"; then
+     LDAPLIBS="-lldap -llber"\
+-    LDAPINCLUDE="-I/usr/include/ldap"
++    LDAPINCLUDE="-I/usr/include/openldap"
+     AC_SUBST(LDAPLIBS)
+     AC_SUBST(LDAPINCLUDE)
+     AC_CHECK_FUNCS(ldap_set_option)

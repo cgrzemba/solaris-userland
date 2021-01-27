@@ -1,0 +1,13 @@
+diff --git a/plugins-root/pst3.c b/plugins-root/pst3.c
+index af9b518..e2aa040 100644
+--- a/plugins-root/pst3.c
++++ b/plugins-root/pst3.c
+@@ -121,7 +121,7 @@ int main (int argc, char **argv)
+     int ps_fd;
+     int as_fd;
+     off_t argoff;
+-    int i;
++    int i,j;
+     char *args;
+     char *procname;
+     char *ptr;

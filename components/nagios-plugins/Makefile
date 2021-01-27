@@ -31,10 +31,10 @@ include ../../make-rules/shared-macros.mk
 PATH=$(SPRO_VROOT)/bin:$(GNUBIN):$(USRBINDIR)
 
 COMPONENT_NAME=		nagios-plugins
-COMPONENT_VERSION=	2.1.1
+COMPONENT_VERSION=	2.3.3
 COMPONENT_PROJECT_URL= https://nagios-plugins.org/
 COMPONENT_ARCHIVE_HASH= \
-    sha256:c7daf95ecbf6909724258e55a319057b78dcca23b2a6cc0a640b90c90d4feae3
+    sha256:07859071632ded58c5135d613438137022232da75f8bdc1687f3f75da2fe597f
 # COMPONENT_ARCHIVE_URL= http://assets.nagios.com/downloads/nagiosplugins/$(COMPONENT_NAME)-$(COMPONENT_VERSION).tar.gz
 COMPONENT_ARCHIVE_URL= http://www.nagios-plugins.org/download/$(COMPONENT_NAME)-$(COMPONENT_VERSION).tar.gz
 
@@ -45,8 +45,15 @@ TPNO=			99999
 include $(WS_MAKE_RULES)/common.mk
 
 studio_C99MODE= $(studio_C99_ENABLE)
+SPRO_ROOT = /opt
 
+COMPONENT_PREP_ACTION = (cd $(@D) ; autoconf -f)
 # CONFIGURE_OPTIONS += --enable-largefile
+# CONFIGURE_OPTIONS += --without-ldap
+CONFIGURE_OPTIONS += --with-ping6-command="/usr/sbin/ping -A inet6 -s %s 56 %d"
+CONFIGURE_OPTIONS += --libexecdir=$(CONFIGURE_PREFIX)/libexec/nagios-plugins
+
+COMPONENT_INSTALL_TARGETS += install-root
 
 COPYRIGHT_FILE = COPYING 
 REQUIRED_PACKAGES += library/security/openssl
