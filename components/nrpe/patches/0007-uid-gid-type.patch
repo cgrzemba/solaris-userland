@@ -1,0 +1,15 @@
+diff --git a/src/nrpe.c b/src/nrpe.c
+index 73699f7..14d2872 100644
+--- a/src/nrpe.c
++++ b/src/nrpe.c
+@@ -2498,8 +2498,8 @@ void my_connection_sighandler(int sig)
+ /* drops privileges */
+ int drop_privileges(char *user, char *group, int full_drop)
+ {
+-	uid_t     uid = (uid_t)-1;
+-	gid_t     gid = (gid_t)-1;
++	uid_t     uid = (uid_t)60001;
++	gid_t     gid = (gid_t)60001;
+ 	struct group *grp;
+ 	struct passwd *pw;
+ 

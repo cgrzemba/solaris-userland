@@ -37,11 +37,10 @@ set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
 set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
 set name=org.opensolaris.arc-caseid value=PSARC/2016/999
 set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
-file path=etc/nagios/nrpe.cfg preserve=renamenew
-file package/solaris/pkg/nrpe path=lib/svc/method/nrpe
+file sparcv9/sample-config/nrpe.cfg path=etc/nagios/nrpe.cfg preserve=renamenew
 file path=usr/libexec/check_nrpe
 file usr/bin/nrpe path=usr/sbin/nrpe
-file package/solaris/pkg/nrpe.xml path=var/svc/manifest/site/nrpe.xml
+file sparcv9/startup/solaris-init.xml path=var/svc/manifest/site/nrpe.xml
 group groupname=nagios gid=5666
 user username=nagios ftpuser=false gcos-field="Nagios user" group=nagios \
     home-dir=/ password=NP uid=5666

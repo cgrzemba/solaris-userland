@@ -28,11 +28,12 @@ include ../../make-rules/shared-macros.mk
 PATH=$(SPRO_VROOT)/bin:$(GNUBIN):$(USRBINDIR)
 
 COMPONENT_NAME=		nrpe
-COMPONENT_VERSION=	2.15
+COMPONENT_VERSION=	4.0.3
+COMPONENT_MAJOR_VERSION= $(shell echo $(COMPONENT_VERSION) | cut -d. -f1 )
 COMPONENT_PROJECT_URL=	http://nrpe.sourceforge.org
 COMPONENT_ARCHIVE_HASH= \
-    sha256:66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072
-COMPONENT_ARCHIVE_URL= https://sourceforge.net/projects/nagios/files/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
+    sha256:f907ba15381adfc6eef211508abd027f8e1973116080faa4534a1191211c0340
+COMPONENT_ARCHIVE_URL= https://sourceforge.net/projects/nagios/files/nrpe-$(COMPONENT_MAJOR_VERSION).x/nrpe-$(COMPONENT_VERSION)/nrpe-$(COMPONENT_VERSION).tar.gz
 
 IPS_PKG_NAME = application/management/$(COMPONENT_NAME)
 
@@ -41,17 +42,20 @@ TPNO=			99999
 include $(WS_MAKE_RULES)/common.mk
 
 studio_C99MODE= $(studio_C99_ENABLE)
+SPRO_ROOT = /opt
 
 CONFIGURE_OPTIONS += --enable-command-args
 CONFIGURE_OPTIONS += --with-kerberos-inc=/usr/include/kerberosv5
+CONFIGURE_OPTIONS += --with-pkgsysconfdir=/etc/nagios
+CONFIGURE_OPTIONS += --with-piddir=/var/run
+CONFIGURE_OPTIONS += --enable-install-method=os
+
+COMPONENT_BUILD_TARGETS = all
 
 COMPONENT_PREP_ACTION = (cd $(@D) ; autoconf -f)
 # for DH key generation to work
 COMPONENT_PRE_CONFIGURE_ACTION = (mkdir $(@D)/include )
 COMPONENT_POST_CONFIGURE_ACTION = (rm -f $(SOURCE_DIR)/include/dh.h )
-COMPONENT_POST_INSTALL_ACTION = (install -d $(PROTO_DIR)$(VARDIR)/svc/manifest/site ; install $(SOURCE_DIR)/package/solaris/pkg/nrpe.xml $(PROTO_DIR)$(VARDIR)/svc/manifest/site);
-COMPONENT_POST_INSTALL_ACTION += (install -d $(PROTOLIBDIR)/methode; install $(SOURCE_DIR)/package/solaris/pkg/nrpe $(PROTOLIBDIR)/methode);
-COMPONENT_POST_INSTALL_ACTION += (install -d $(PROTOETCDIR)/nagios; install $(BUILD_DIR_64)/sample-config/nrpe.cfg $(PROTOETCDIR)/nagios);
 
 install: $(INSTALL_64)
 
